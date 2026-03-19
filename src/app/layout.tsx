@@ -1,8 +1,13 @@
 import type { Metadata } from 'next'
-import { Inter } from 'next/font/google'
+import { Inter, Space_Mono } from 'next/font/google'
 import './globals.css'
 
 const inter = Inter({ subsets: ['latin'] })
+const spaceMono = Space_Mono({ 
+  subsets: ['latin'],
+  weight: ['400', '700'],
+  variable: '--font-space-mono',
+})
 
 export const metadata: Metadata = {
   title: 'Product Manager | Portfolio',
@@ -26,7 +31,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" className="scroll-smooth" suppressHydrationWarning>
-      <body className={`${inter.className} bg-[#121212] text-white antialiased`}>
+      <body className={`${inter.className} ${spaceMono.variable} bg-[#121212] text-white antialiased`}>
         {children}
       </body>
     </html>
