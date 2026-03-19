@@ -1,6 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
+import { BriefcaseBusiness, GraduationCap, PencilRuler, Brush } from "lucide-react";
 
 export default function Resume() {
   const experiences = [
@@ -142,7 +143,9 @@ export default function Resume() {
             viewport={{ once: true }}
             className="text-4xl md:text-6xl font-black tracking-tighter flex items-center gap-6"
           >
-            <span className="w-12 h-12 md:w-16 md:h-16 rounded-full bg-white/10 flex items-center justify-center text-sm font-normal text-white">01</span>
+            <span className="w-12 h-12 md:w-16 md:h-16 rounded-full bg-white/10 flex items-center justify-center text-white">
+              <BriefcaseBusiness size={24} className="md:w-8 md:h-8" />
+            </span>
             Experience
           </motion.h3>
 
@@ -214,71 +217,6 @@ export default function Resume() {
           </div>
         </div>
 
-        {/* Education Section */}
-        <div className="space-y-12">
-          <motion.h3 
-            initial={{ opacity: 0, x: -20 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
-            className="text-4xl md:text-5xl font-black tracking-tighter flex items-center gap-4"
-          >
-            <span className="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center text-xs font-normal text-white">02</span>
-            Education
-          </motion.h3>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-            {education.map((edu, i) => (
-              <motion.div 
-                key={i}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: i * 0.1 }}
-                className="p-8 rounded-3xl bg-white/[0.02] border border-white/5 hover:bg-white/5 hover:border-white/10 transition-all duration-300"
-              >
-                <p className="text-white/50 text-sm mb-2 font-mono">{edu.duration}</p>
-                <h4 className="text-xl md:text-2xl font-bold mb-2">{edu.degree}</h4>
-                <p className="text-white/70 font-light">{edu.school}</p>
-              </motion.div>
-            ))}
-          </div>
-        </div>
-
-        {/* Expertise Section */}
-        <div className="space-y-12">
-          <motion.h3 
-            initial={{ opacity: 0, x: -20 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
-            className="text-4xl md:text-5xl font-black tracking-tighter flex items-center gap-4"
-          >
-            <span className="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center text-xs font-normal text-white">03</span>
-            Expertise
-          </motion.h3>
-
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {skillCategories.map((cat, i) => (
-              <motion.div 
-                key={i}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: i * 0.1 }}
-                className="p-8 rounded-3xl bg-white/[0.02] border border-white/5"
-              >
-                <h4 className="text-lg uppercase tracking-widest text-white/50 mb-6 font-semibold">{cat.name}</h4>
-                <div className="flex flex-wrap gap-3">
-                  {cat.skills.map((skill, j) => (
-                    <span key={j} className="px-4 py-2 rounded-full border border-white/10 bg-white/5 text-sm text-white/80 hover:bg-white/20 transition-colors cursor-default">
-                      {skill}
-                    </span>
-                  ))}
-                </div>
-              </motion.div>
-            ))}
-          </div>
-        </div>
-
         {/* UX Case Studies Section */}
         <div className="space-y-16">
           <motion.h3 
@@ -287,7 +225,9 @@ export default function Resume() {
             viewport={{ once: true }}
             className="text-4xl md:text-6xl font-black tracking-tighter flex items-center gap-6"
           >
-            <span className="w-12 h-12 md:w-16 md:h-16 rounded-full bg-white/10 flex items-center justify-center text-sm font-normal text-white">04</span>
+            <span className="w-12 h-12 md:w-16 md:h-16 rounded-full bg-white/10 flex items-center justify-center text-white">
+              <Brush size={24} className="md:w-8 md:h-8" />
+            </span>
             UX Case Studies
           </motion.h3>
 
@@ -337,6 +277,75 @@ export default function Resume() {
                   </div>
                 </div>
               </motion.a>
+            ))}
+          </div>
+        </div>
+
+        {/* Expertise Section */}
+        <div className="space-y-12">
+          <motion.h3 
+            initial={{ opacity: 0, x: -20 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            className="text-4xl md:text-5xl font-black tracking-tighter flex items-center gap-4"
+          >
+            <span className="w-12 h-12 md:w-16 md:h-16 rounded-full bg-white/10 flex items-center justify-center text-white">
+              <PencilRuler size={24} className="md:w-8 md:h-8" />
+            </span>
+            Expertise
+          </motion.h3>
+
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            {skillCategories.map((cat, i) => (
+              <motion.div 
+                key={i}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: i * 0.1 }}
+                className="p-8 rounded-3xl bg-white/[0.02] border border-white/5"
+              >
+                <h4 className="text-lg uppercase tracking-widest text-white/50 mb-6 font-semibold">{cat.name}</h4>
+                <div className="flex flex-wrap gap-3">
+                  {cat.skills.map((skill, j) => (
+                    <span key={j} className="px-4 py-2 rounded-full border border-white/10 bg-white/5 text-sm text-white/80 hover:bg-white/20 transition-colors cursor-default">
+                      {skill}
+                    </span>
+                  ))}
+                </div>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+
+        {/* Education Section */}
+        <div className="space-y-12">
+          <motion.h3 
+            initial={{ opacity: 0, x: -20 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            className="text-4xl md:text-5xl font-black tracking-tighter flex items-center gap-4"
+          >
+            <span className="w-12 h-12 md:w-16 md:h-16 rounded-full bg-white/10 flex items-center justify-center text-white">
+              <GraduationCap size={24} className="md:w-8 md:h-8" />
+            </span>
+            Education
+          </motion.h3>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+            {education.map((edu, i) => (
+              <motion.div 
+                key={i}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: i * 0.1 }}
+                className="p-8 rounded-3xl bg-white/[0.02] border border-white/5 hover:bg-white/5 hover:border-white/10 transition-all duration-300"
+              >
+                <p className="text-white/50 text-sm mb-2 font-mono">{edu.duration}</p>
+                <h4 className="text-xl md:text-2xl font-bold mb-2">{edu.degree}</h4>
+                <p className="text-white/70 font-light">{edu.school}</p>
+              </motion.div>
             ))}
           </div>
         </div>
