@@ -86,7 +86,7 @@ export default function Resume() {
       subtitle: "Track Smart, Spend Wise",
       description: "A comprehensive personal finance management solution designed to help users track expenses and manage budgets intuitively.",
       url: "https://www.behance.net/gallery/204666317/Walletwise-Track-Smart-Spend-Wise",
-      image: "/walletwise.png",
+      image: "/edzy.png", // Temporarily using working image to test
       tags: ["FinTech", "Mobile App", "UI/UX"]
     },
     {
@@ -110,7 +110,7 @@ export default function Resume() {
       subtitle: "The research library",
       description: "A digital research repository for educational institutions, optimizing information gathering and organization for students and academics.",
       url: "https://www.behance.net/gallery/199440613/Precise-The-research-library",
-      image: "/Precise.png",
+      image: "/precise.png",
       tags: ["EdTech", "Knowledge Management", "LMS"]
     }
   ];
@@ -251,7 +251,14 @@ export default function Resume() {
                     <div className="flex items-center gap-4">
                       {project.image && (
                         <div className="w-12 h-12 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center overflow-hidden shrink-0 group-hover:scale-110 transition-transform duration-500">
-                          <img src={project.image} alt={project.title} className="w-full h-full object-cover" />
+                          <img 
+                            src={project.image} 
+                            alt={project.title} 
+                            className="w-full h-full object-cover" 
+                            onError={(e) => {
+                              (e.target as HTMLImageElement).src = 'https://via.placeholder.com/150?text=' + project.title;
+                            }}
+                          />
                         </div>
                       )}
                       <div>
