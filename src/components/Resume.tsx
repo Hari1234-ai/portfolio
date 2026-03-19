@@ -208,71 +208,68 @@ export default function Resume() {
           </div>
         </div>
 
-        {/* Education & Skills Twin Columns */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-16 md:gap-8">
-          
-          {/* Education */}
-          <div className="space-y-12">
-            <motion.h3 
-              initial={{ opacity: 0, x: -20 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
-              className="text-4xl md:text-5xl font-black tracking-tighter flex items-center gap-4"
-            >
-              <span className="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center text-xs font-normal text-white">02</span>
-              Education
-            </motion.h3>
+        {/* Education Section */}
+        <div className="space-y-12">
+          <motion.h3 
+            initial={{ opacity: 0, x: -20 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            className="text-4xl md:text-5xl font-black tracking-tighter flex items-center gap-4"
+          >
+            <span className="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center text-xs font-normal text-white">02</span>
+            Education
+          </motion.h3>
 
-            <div className="space-y-6">
-              {education.map((edu, i) => (
-                <motion.div 
-                  key={i}
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ delay: i * 0.1 }}
-                  className="p-8 rounded-3xl bg-white/[0.02] border border-white/5"
-                >
-                  <p className="text-white/50 text-sm mb-2 font-mono">{edu.duration}</p>
-                  <h4 className="text-xl md:text-2xl font-bold mb-2">{edu.degree}</h4>
-                  <p className="text-white/70 font-light">{edu.school}</p>
-                </motion.div>
-              ))}
-            </div>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+            {education.map((edu, i) => (
+              <motion.div 
+                key={i}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: i * 0.1 }}
+                className="p-8 rounded-3xl bg-white/[0.02] border border-white/5 hover:bg-white/5 hover:border-white/10 transition-all duration-300"
+              >
+                <p className="text-white/50 text-sm mb-2 font-mono">{edu.duration}</p>
+                <h4 className="text-xl md:text-2xl font-bold mb-2">{edu.degree}</h4>
+                <p className="text-white/70 font-light">{edu.school}</p>
+              </motion.div>
+            ))}
           </div>
+        </div>
 
-          {/* Skills */}
-          <div className="space-y-12">
-            <motion.h3 
-              initial={{ opacity: 0, x: -20 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
-              className="text-4xl md:text-5xl font-black tracking-tighter flex items-center gap-4"
-            >
-              <span className="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center text-xs font-normal text-white">03</span>
-              Expertise
-            </motion.h3>
+        {/* Expertise Section */}
+        <div className="space-y-12">
+          <motion.h3 
+            initial={{ opacity: 0, x: -20 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            className="text-4xl md:text-5xl font-black tracking-tighter flex items-center gap-4"
+          >
+            <span className="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center text-xs font-normal text-white">03</span>
+            Expertise
+          </motion.h3>
 
-            <div className="space-y-8">
-              {skillCategories.map((cat, i) => (
-                <motion.div 
-                  key={i}
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ delay: i * 0.1 }}
-                >
-                  <h4 className="text-lg uppercase tracking-widest text-white/50 mb-4 font-semibold">{cat.name}</h4>
-                  <div className="flex flex-wrap gap-3">
-                    {cat.skills.map((skill, j) => (
-                      <span key={j} className="px-4 py-2 rounded-full border border-white/10 bg-white/5 text-sm text-white/80 hover:bg-white/20 transition-colors cursor-default">
-                        {skill}
-                      </span>
-                    ))}
-                  </div>
-                </motion.div>
-              ))}
-            </div>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            {skillCategories.map((cat, i) => (
+              <motion.div 
+                key={i}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: i * 0.1 }}
+                className="p-8 rounded-3xl bg-white/[0.02] border border-white/5"
+              >
+                <h4 className="text-lg uppercase tracking-widest text-white/50 mb-6 font-semibold">{cat.name}</h4>
+                <div className="flex flex-wrap gap-3">
+                  {cat.skills.map((skill, j) => (
+                    <span key={j} className="px-4 py-2 rounded-full border border-white/10 bg-white/5 text-sm text-white/80 hover:bg-white/20 transition-colors cursor-default">
+                      {skill}
+                    </span>
+                  ))}
+                </div>
+              </motion.div>
+            ))}
           </div>
         </div>
 
@@ -288,7 +285,7 @@ export default function Resume() {
             UX Case Studies
           </motion.h3>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+          <div className="flex overflow-x-auto hide-scrollbar gap-8 pb-8 px-2 -mx-2 snap-x">
             {caseStudies.map((project, i) => (
               <motion.a
                 key={i}
@@ -299,7 +296,7 @@ export default function Resume() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, margin: "-50px" }}
                 transition={{ duration: 0.5, delay: i * 0.1 }}
-                className="glass p-8 md:p-10 rounded-[2rem] border border-white/5 hover:bg-white/5 hover:border-white/10 transition-all duration-500 group relative overflow-hidden flex flex-col"
+                className="glass p-8 md:p-10 rounded-[2rem] border border-white/5 hover:bg-white/5 hover:border-white/10 transition-all duration-500 group relative overflow-hidden flex flex-col min-w-[300px] md:min-w-[450px] snap-start"
               >
                 <div className="absolute top-0 right-0 w-48 h-48 bg-white/5 rounded-full blur-3xl -mr-24 -mt-24 opacity-0 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none"></div>
                 
