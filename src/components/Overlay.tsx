@@ -61,15 +61,15 @@ export default function Overlay({ scrollYProgress }: { scrollYProgress: MotionVa
         style={{ opacity: o1, y: y1 }}
         className="absolute inset-0 flex flex-col items-center justify-center text-center p-8"
       >
-        <h1 className="text-3xl md:text-5xl lg:text-7xl font-medium font-monospace-custom mb-6 text-white drop-shadow-2xl leading-tight inline-flex flex-row items-center gap-6 text-center">
-          <span>
+        <h1 className="text-3xl md:text-5xl lg:text-7xl font-medium font-monospace-custom mb-6 text-white drop-shadow-2xl leading-tight relative inline-flex items-center">
+          <span className="text-center">
             Hello,
             <br />I'm Hari Krishna
           </span>
           <button 
             type="button"
             onClick={toggleAudio}
-            className={`p-3 rounded-full bg-white/5 border border-white/10 hover:bg-white/10 hover:border-white/20 transition-all duration-300 group/audio pointer-events-auto z-[100] cursor-pointer ${isPlaying ? 'text-blue-400' : 'text-white/40'}`}
+            className={`p-3 rounded-full bg-white/5 border border-white/10 hover:bg-white/10 hover:border-white/20 transition-all duration-300 group/audio pointer-events-auto z-[100] cursor-pointer absolute left-full ml-6 ${isPlaying ? 'text-blue-400' : 'text-white/40'}`}
             title="Listen to intro"
           >
             <Volume2 size={24} className={`transition-transform duration-300 ${isPlaying ? 'scale-110' : 'group-hover/audio:scale-110'}`} />
