@@ -168,7 +168,7 @@ export default function Resume() {
               onPause={() => setIsPlaying(false)}
               onPlay={() => setIsPlaying(true)}
             >
-              <source src="/audio2.m4a" type="audio/mp4" />
+              <source src="/audio2.mp3" type="audio/mpeg" />
             </audio>
           </h2>
           <p className="text-lg md:text-xl font-normal leading-relaxed tracking-normal text-white/80">
