@@ -156,6 +156,9 @@ export default function ScrollyCanvas() {
           </div>
         )}
 
+        {/* Smooth Bottom Gradient Transition */}
+        <div className="absolute bottom-0 left-0 right-0 h-48 bg-gradient-to-t from-[#121212] to-transparent pointer-events-none z-20" />
+
         {/* Dynamic Parallax Text Overlay */}
         {loaded && <Overlay scrollYProgress={scrollYProgress} />}
         
