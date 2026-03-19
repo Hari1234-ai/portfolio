@@ -7,6 +7,16 @@ const inter = Inter({ subsets: ['latin'] })
 export const metadata: Metadata = {
   title: 'Product Manager | Portfolio',
   description: 'Hari Krishna - Product Manager specializing in AI-driven EdTech',
+  openGraph: {
+    title: 'Product Manager | Portfolio',
+    description: 'Hari Krishna - Product Manager specializing in AI-driven EdTech',
+    type: 'website',
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Product Manager | Portfolio',
+    description: 'Hari Krishna - Product Manager specializing in AI-driven EdTech',
+  },
 }
 
 export default function RootLayout({
