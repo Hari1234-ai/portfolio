@@ -1,12 +1,12 @@
 @import "tailwindcss";
 
-@theme {
-  --font-mono: var(--font-space-mono), monospace;
-}
-
 :root {
   --background: #121212;
   --foreground: #ffffff;
+}
+
+.font-monospace-custom {
+  font-family: var(--font-space-mono), monospace !important;
 }
 
 body {

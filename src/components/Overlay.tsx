@@ -25,7 +25,7 @@ export default function Overlay({ scrollYProgress }: { scrollYProgress: MotionVa
         style={{ opacity: o1, y: y1 }}
         className="absolute inset-0 flex flex-col items-center justify-center text-center p-8"
       >
-        <h1 className="text-3xl md:text-5xl lg:text-7xl font-medium font-mono mb-6 text-white drop-shadow-2xl leading-tight">
+        <h1 className="text-3xl md:text-5xl lg:text-7xl font-medium font-monospace-custom mb-6 text-white drop-shadow-2xl leading-tight">
           Hello,
           <br />I'm Hari Krishna
         </h1>
