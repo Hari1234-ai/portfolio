@@ -85,6 +85,7 @@ export default function Resume() {
       subtitle: "Track Smart, Spend Wise",
       description: "A comprehensive personal finance management solution designed to help users track expenses and manage budgets intuitively.",
       url: "https://www.behance.net/gallery/204666317/Walletwise-Track-Smart-Spend-Wise",
+      image: "/walletwise.png",
       tags: ["FinTech", "Mobile App", "UI/UX"]
     },
     {
@@ -92,6 +93,7 @@ export default function Resume() {
       subtitle: "Sustainably yours, today & tomorrow",
       description: "An eco-conscious e-commerce platform promoting sustainable products and mindful consumption through a clean, nature-inspired interface.",
       url: "https://www.behance.net/gallery/203559589/Ecoshop-sustainably-yours-today-tomorrow",
+      image: "/ecoshop.png",
       tags: ["E-commerce", "Sustainability", "Product Design"]
     },
     {
@@ -99,6 +101,7 @@ export default function Resume() {
       subtitle: "Order taking app for waiters",
       description: "A streamlined digital ordering system for hospitality staff, focusing on speed, accuracy, and operational efficiency in high-pressure environments.",
       url: "https://www.behance.net/gallery/203219799/Quickserve-Orders-taking-app-for-waiters-UI",
+      image: "/quickserve.png",
       tags: ["B2B", "Service Design", "Waitstaff App"]
     },
     {
@@ -106,6 +109,7 @@ export default function Resume() {
       subtitle: "The research library",
       description: "A digital research repository for educational institutions, optimizing information gathering and organization for students and academics.",
       url: "https://www.behance.net/gallery/199440613/Precise-The-research-library",
+      image: "/Precise.png",
       tags: ["EdTech", "Knowledge Management", "LMS"]
     }
   ];
@@ -304,9 +308,16 @@ export default function Resume() {
                 
                 <div className="relative z-10 flex flex-col h-full">
                   <div className="flex justify-between items-start mb-6">
-                    <div>
-                      <h4 className="text-2xl md:text-3xl font-bold mb-1 group-hover:translate-x-2 transition-transform duration-300">{project.title}</h4>
-                      <p className="text-white/50 text-sm font-medium tracking-wide uppercase">{project.subtitle}</p>
+                    <div className="flex items-center gap-4">
+                      {project.image && (
+                        <div className="w-12 h-12 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center overflow-hidden shrink-0 group-hover:scale-110 transition-transform duration-500">
+                          <img src={project.image} alt={project.title} className="w-full h-full object-cover" />
+                        </div>
+                      )}
+                      <div>
+                        <h4 className="text-2xl md:text-3xl font-bold mb-1 group-hover:translate-x-2 transition-transform duration-300">{project.title}</h4>
+                        <p className="text-white/50 text-sm font-medium tracking-wide uppercase">{project.subtitle}</p>
+                      </div>
                     </div>
                     <div className="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center group-hover:bg-white text-white group-hover:text-black transition-all duration-300">
                       <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M7 7h10v10"/><path d="M7 17L17 7"/></svg>
