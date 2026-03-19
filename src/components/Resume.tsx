@@ -1,8 +1,9 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { BriefcaseBusiness, GraduationCap, PencilRuler, Brush, Wallet, Leaf, Utensils, Library } from "lucide-react";
+import { BriefcaseBusiness, GraduationCap, PencilRuler, Brush, Wallet, Leaf, Utensils, Library, Volume2 } from "lucide-react";
 import Image from "next/image";
+import { useRef, useState } from "react";
 
 // Import images from public folder
 import walletwiseImg from "../../public/walletwise.png";
@@ -11,6 +12,20 @@ import quickserveImg from "../../public/quickserve.png";
 import preciseImg from "../../public/precise.png";
 
 export default function Resume() {
+  const audioRef = useRef<HTMLAudioElement | null>(null);
+  const [isPlaying, setIsPlaying] = useState(false);
+
+  const toggleAudio = () => {
+    if (audioRef.current) {
+      if (isPlaying) {
+        audioRef.current.pause();
+      } else {
+        audioRef.current.play();
+      }
+      setIsPlaying(!isPlaying);
+    }
+  };
+
   const experiences = [
     {
       role: "Product Manager",
@@ -138,8 +153,22 @@ export default function Resume() {
           transition={{ duration: 0.8 }}
           className="w-full"
         >
-          <h2 className="text-xl md:text-2xl font-light text-white/60 uppercase tracking-[0.2em] mb-4">
+          <h2 className="text-xl md:text-2xl font-light text-white/60 uppercase tracking-[0.2em] mb-4 flex items-center gap-4">
             About Me
+            <button 
+              onClick={toggleAudio}
+              className={`p-2 rounded-full bg-white/5 border border-white/10 hover:bg-white/10 hover:border-white/20 transition-all duration-300 group/audio ${isPlaying ? 'text-blue-400' : 'text-white/40'}`}
+              title="Listen to story"
+            >
+              <Volume2 size={18} className={`transition-transform duration-300 ${isPlaying ? 'scale-110' : 'group-hover/audio:scale-110'}`} />
+            </button>
+            <audio 
+              ref={audioRef} 
+              src="/audio2.m4a" 
+              onEnded={() => setIsPlaying(false)}
+              onPause={() => setIsPlaying(false)}
+              onPlay={() => setIsPlaying(true)}
+            />
           </h2>
           <p className="text-lg md:text-xl font-normal leading-relaxed tracking-normal text-white/80">
             Product Manager with 2+ years of experience specializing in <span className="font-semibold text-white">AI-driven EdTech</span>, currently leading end-to-end product development at Edzy for scalable learning platforms serving NCERT students across India. Experienced in product strategy, user research, and data-driven growth, with a background in UX design and cross-functional collaboration. Skilled in building user-centric web and mobile solutions, with expertise in AI/ML products, Agile methodologies, and educational platforms.
