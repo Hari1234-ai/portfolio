@@ -55,12 +55,12 @@ export default function Overlay({ scrollYProgress }: { scrollYProgress: MotionVa
           </button>
           <audio 
             ref={audioRef} 
-            src="/audio1.m4a" 
-            autoPlay={false}
             onEnded={() => setIsPlaying(false)}
             onPause={() => setIsPlaying(false)}
             onPlay={() => setIsPlaying(true)}
-          />
+          >
+            <source src="/audio1.m4a" type="audio/mp4" />
+          </audio>
         </h1>
         <p className="text-base md:text-xl text-white/80 font-light tracking-[0.3em] uppercase mt-2">
           Product Manager
