@@ -15,31 +15,45 @@ export default function ScrollyCanvas() {
   const [loaded, setLoaded] = useState(false);
   const [progress, setProgress] = useState(0);
 
-  // Preload images
+  // Progressive Preloading logic
   useEffect(() => {
     let loadedCount = 0;
     const imgArray: HTMLImageElement[] = [];
+    const INITIAL_THRESHOLD = 5; // Load first 5 frames before showing UI
+    let hasTriggeredLoaded = false;
+
+    // Pre-initialize images array so renderFrame can access it immediately
+    imagesRef.current = imgArray;
 
     for (let i = 1; i <= FRAME_COUNT; i++) {
       const img = new Image();
-      // Files are named 00001.png, 00002.png...
       const frameNum = String(i).padStart(5, '0');
       img.src = `/sequence/${frameNum}.png`;
       
       img.onload = () => {
         loadedCount++;
-        setProgress(Math.round((loadedCount / FRAME_COUNT) * 100));
-        if (loadedCount === FRAME_COUNT) {
-          imagesRef.current = imgArray;
-          // Slight delay to ensure React commits state smoothly
-          setTimeout(() => setLoaded(true), 200);
+        
+        // Update progress bar based on the *initial* threshold for a faster "feeling" load
+        if (!hasTriggeredLoaded) {
+          const initialProgress = Math.min(100, Math.round((loadedCount / INITIAL_THRESHOLD) * 100));
+          setProgress(initialProgress);
+        } else {
+          // Once UI is visible, we can track total progress or just stop updating the bar
+          setProgress(Math.round((loadedCount / FRAME_COUNT) * 100));
+        }
+
+        // Trigger UI visibility early
+        if (loadedCount >= INITIAL_THRESHOLD && !hasTriggeredLoaded) {
+          hasTriggeredLoaded = true;
+          // Small buffer for DOM readiness
+          setTimeout(() => setLoaded(true), 100);
         }
       };
       
       img.onerror = () => {
         loadedCount++;
-        if (loadedCount === FRAME_COUNT) {
-          imagesRef.current = imgArray;
+        if (loadedCount >= INITIAL_THRESHOLD && !hasTriggeredLoaded) {
+          hasTriggeredLoaded = true;
           setLoaded(true);
         }
       };
