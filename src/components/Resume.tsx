@@ -14,15 +14,26 @@ import preciseImg from "../../public/precise.png";
 export default function Resume() {
   const audioRef = useRef<HTMLAudioElement | null>(null);
   const [isPlaying, setIsPlaying] = useState(false);
+  const [errorMsg, setErrorMsg] = useState<string | null>(null);
 
-  const toggleAudio = () => {
+  const toggleAudio = async () => {
+    setErrorMsg(null);
     if (audioRef.current) {
       if (isPlaying) {
         audioRef.current.pause();
+        setIsPlaying(false);
       } else {
-        audioRef.current.play();
+        try {
+          await audioRef.current.play();
+          setIsPlaying(true);
+        } catch (err: any) {
+          console.error("Audio playback failed:", err);
+          setErrorMsg(err.name === "NotAllowedError" ? "Click again to allow audio" : (err.message || "Failed to play audio"));
+          setIsPlaying(false);
+        }
       }
-      setIsPlaying(!isPlaying);
+    } else {
+      setErrorMsg("Audio element not ready");
     }
   };
 
@@ -153,15 +164,21 @@ export default function Resume() {
           transition={{ duration: 0.8 }}
           className="w-full"
         >
-          <h2 className="text-xl md:text-2xl font-light text-white/60 uppercase tracking-[0.2em] mb-4 flex items-center gap-4">
+          <h2 className="text-xl md:text-2xl font-light text-white/60 uppercase tracking-[0.2em] mb-4 flex items-center gap-4 relative">
             About Me
             <button 
+              type="button"
               onClick={toggleAudio}
-              className={`p-2 rounded-full bg-white/5 border border-white/10 hover:bg-white/10 hover:border-white/20 transition-all duration-300 group/audio ${isPlaying ? 'text-blue-400' : 'text-white/40'}`}
+              className={`p-2 rounded-full bg-white/5 border border-white/10 hover:bg-white/10 hover:border-white/20 transition-all duration-300 group/audio z-[100] cursor-pointer ${isPlaying ? 'text-blue-400' : 'text-white/40'}`}
               title="Listen to story"
             >
               <Volume2 size={18} className={`transition-transform duration-300 ${isPlaying ? 'scale-110' : 'group-hover/audio:scale-110'}`} />
             </button>
+            {errorMsg && (
+              <span className="text-red-400 text-xs font-mono absolute -bottom-6 left-32 whitespace-nowrap bg-black/50 px-2 py-1 rounded-md backdrop-blur-sm">
+                {errorMsg}
+              </span>
+            )}
             <audio 
               ref={audioRef} 
               onEnded={() => setIsPlaying(false)}

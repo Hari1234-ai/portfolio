@@ -22,15 +22,26 @@ export default function Overlay({ scrollYProgress }: { scrollYProgress: MotionVa
 
   const audioRef = useRef<HTMLAudioElement | null>(null);
   const [isPlaying, setIsPlaying] = useState(false);
+  const [errorMsg, setErrorMsg] = useState<string | null>(null);
 
-  const toggleAudio = () => {
+  const toggleAudio = async () => {
+    setErrorMsg(null);
     if (audioRef.current) {
       if (isPlaying) {
         audioRef.current.pause();
+        setIsPlaying(false);
       } else {
-        audioRef.current.play();
+        try {
+          await audioRef.current.play();
+          setIsPlaying(true);
+        } catch (err: any) {
+          console.error("Audio playback failed:", err);
+          setErrorMsg(err.name === "NotAllowedError" ? "Click again to allow audio" : (err.message || "Failed to play audio"));
+          setIsPlaying(false);
+        }
       }
-      setIsPlaying(!isPlaying);
+    } else {
+      setErrorMsg("Audio element not ready");
     }
   };
 
@@ -54,6 +65,11 @@ export default function Overlay({ scrollYProgress }: { scrollYProgress: MotionVa
           >
             <Volume2 size={24} className={`transition-transform duration-300 ${isPlaying ? 'scale-110' : 'group-hover/audio:scale-110'}`} />
           </button>
+          {errorMsg && (
+            <span className="text-red-400 text-sm font-mono absolute -bottom-8 whitespace-nowrap bg-black/50 px-3 py-1 rounded-full backdrop-blur-sm shadow-xl">
+              {errorMsg}
+            </span>
+          )}
           <audio 
             ref={audioRef} 
             onEnded={() => setIsPlaying(false)}
