@@ -156,10 +156,8 @@ export default function Resume() {
                   transition={{ duration: 0.6, delay: i * 0.1 }}
                   className="relative"
                 >
-                  {/* Timeline Dot/Marker - Centered on the line */}
-                  <div className="absolute -left-[24px] md:-left-[64px] top-0 w-px flex items-center justify-center z-10">
-                    <div className="w-3 h-3 md:w-4 md:h-4 shrink-0 rounded-full bg-white shadow-[0_0_15px_rgba(255,255,255,0.8)] -translate-x-1/2"></div>
-                  </div>
+                  {/* Horizontal Connection Line - Centered on the card's height */}
+                  <div className="absolute -left-[24px] md:-left-[64px] top-1/2 w-[24px] md:w-[64px] h-px bg-white/20 z-10 pointer-events-none"></div>
 
                   <div className="glass p-8 md:p-12 rounded-[2.5rem] border border-white/5 hover:bg-white/5 hover:border-white/10 transition-all duration-500 group relative overflow-hidden flex flex-col xl:flex-row gap-12 items-center">
                     <div className="absolute top-0 right-0 w-64 h-64 bg-white/5 rounded-full blur-3xl -mr-32 -mt-32 opacity-0 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none"></div>
