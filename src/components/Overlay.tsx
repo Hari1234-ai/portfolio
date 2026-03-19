@@ -21,27 +21,38 @@ export default function Overlay({ scrollYProgress }: { scrollYProgress: MotionVa
   const y3 = useTransform(scrollYProgress, [0.55, 0.6, 0.85], ["20vh", "0vh", "-100vh"]);
 
   const audioRef = useRef<HTMLAudioElement | null>(null);
+  const playPromiseRef = useRef<Promise<void> | null>(null);
   const [isPlaying, setIsPlaying] = useState(false);
   const [errorMsg, setErrorMsg] = useState<string | null>(null);
 
   const toggleAudio = async () => {
     setErrorMsg(null);
-    if (audioRef.current) {
-      if (isPlaying) {
-        audioRef.current.pause();
-        setIsPlaying(false);
-      } else {
-        try {
-          await audioRef.current.play();
-          setIsPlaying(true);
-        } catch (err: any) {
+    if (!audioRef.current) {
+      setErrorMsg("Audio element not ready");
+      return;
+    }
+
+    if (isPlaying) {
+      // If a play promise is pending, we must wait for it to resolve before pausing
+      if (playPromiseRef.current) {
+        await playPromiseRef.current.catch(() => {});
+      }
+      audioRef.current.pause();
+      setIsPlaying(false);
+    } else {
+      try {
+        playPromiseRef.current = audioRef.current.play();
+        await playPromiseRef.current;
+        setIsPlaying(true);
+      } catch (err: any) {
+        if (err.name !== "AbortError") {
           console.error("Audio playback failed:", err);
           setErrorMsg(err.name === "NotAllowedError" ? "Click again to allow audio" : (err.message || "Failed to play audio"));
-          setIsPlaying(false);
         }
+        setIsPlaying(false);
+      } finally {
+        playPromiseRef.current = null;
       }
-    } else {
-      setErrorMsg("Audio element not ready");
     }
   };
 
@@ -72,6 +83,7 @@ export default function Overlay({ scrollYProgress }: { scrollYProgress: MotionVa
           )}
           <audio 
             ref={audioRef} 
+            preload="auto"
             onEnded={() => setIsPlaying(false)}
             onPause={() => setIsPlaying(false)}
             onPlay={() => setIsPlaying(true)}

@@ -13,27 +13,37 @@ import preciseImg from "../../public/precise.png";
 
 export default function Resume() {
   const audioRef = useRef<HTMLAudioElement | null>(null);
+  const playPromiseRef = useRef<Promise<void> | null>(null);
   const [isPlaying, setIsPlaying] = useState(false);
   const [errorMsg, setErrorMsg] = useState<string | null>(null);
 
   const toggleAudio = async () => {
     setErrorMsg(null);
-    if (audioRef.current) {
-      if (isPlaying) {
-        audioRef.current.pause();
-        setIsPlaying(false);
-      } else {
-        try {
-          await audioRef.current.play();
-          setIsPlaying(true);
-        } catch (err: any) {
+    if (!audioRef.current) {
+      setErrorMsg("Audio element not ready");
+      return;
+    }
+
+    if (isPlaying) {
+      if (playPromiseRef.current) {
+        await playPromiseRef.current.catch(() => {});
+      }
+      audioRef.current.pause();
+      setIsPlaying(false);
+    } else {
+      try {
+        playPromiseRef.current = audioRef.current.play();
+        await playPromiseRef.current;
+        setIsPlaying(true);
+      } catch (err: any) {
+        if (err.name !== "AbortError") {
           console.error("Audio playback failed:", err);
           setErrorMsg(err.name === "NotAllowedError" ? "Click again to allow audio" : (err.message || "Failed to play audio"));
-          setIsPlaying(false);
         }
+        setIsPlaying(false);
+      } finally {
+        playPromiseRef.current = null;
       }
-    } else {
-      setErrorMsg("Audio element not ready");
     }
   };
 
@@ -181,6 +191,7 @@ export default function Resume() {
             )}
             <audio 
               ref={audioRef} 
+              preload="auto"
               onEnded={() => setIsPlaying(false)}
               onPause={() => setIsPlaying(false)}
               onPlay={() => setIsPlaying(true)}
