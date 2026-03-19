@@ -3,7 +3,7 @@
 import { motion } from "framer-motion";
 import { BriefcaseBusiness, GraduationCap, PencilRuler, Brush, Wallet, Leaf, Utensils, Library, Volume2 } from "lucide-react";
 import Image from "next/image";
-import { useRef, useState } from "react";
+import { useRef, useState, useEffect } from "react";
 
 // Import images from public folder
 import walletwiseImg from "../../public/walletwise.png";
@@ -13,36 +13,35 @@ import preciseImg from "../../public/precise.png";
 
 export default function Resume() {
   const audioRef = useRef<HTMLAudioElement | null>(null);
-  const playPromiseRef = useRef<Promise<void> | null>(null);
   const [isPlaying, setIsPlaying] = useState(false);
   const [errorMsg, setErrorMsg] = useState<string | null>(null);
 
+  useEffect(() => {
+    const audio = new Audio("/audio2.mp3");
+    audio.preload = "auto";
+    audio.onended = () => setIsPlaying(false);
+    audio.onpause = () => setIsPlaying(false);
+    audio.onplay = () => setIsPlaying(true);
+    audioRef.current = audio;
+
+    return () => {
+      audio.pause();
+      audio.src = "";
+    };
+  }, []);
+
   const toggleAudio = async () => {
     setErrorMsg(null);
-    if (!audioRef.current) {
-      setErrorMsg("Audio element not ready");
-      return;
-    }
+    if (!audioRef.current) return;
 
-    if (isPlaying) {
-      if (playPromiseRef.current) {
-        await playPromiseRef.current.catch(() => {});
-      }
+    if (!audioRef.current.paused) {
       audioRef.current.pause();
-      setIsPlaying(false);
     } else {
       try {
-        playPromiseRef.current = audioRef.current.play();
-        await playPromiseRef.current;
-        setIsPlaying(true);
+        await audioRef.current.play();
       } catch (err: any) {
-        if (err.name !== "AbortError") {
-          console.error("Audio playback failed:", err);
-          setErrorMsg(err.name === "NotAllowedError" ? "Click again to allow audio" : (err.message || "Failed to play audio"));
-        }
-        setIsPlaying(false);
-      } finally {
-        playPromiseRef.current = null;
+        console.error("Audio playback failed:", err);
+        setErrorMsg(err.name === "NotAllowedError" ? "Click again to allow audio" : (err.message || "Failed to play audio"));
       }
     }
   };
@@ -189,15 +188,6 @@ export default function Resume() {
                 {errorMsg}
               </span>
             )}
-            <audio 
-              ref={audioRef} 
-              preload="auto"
-              onEnded={() => setIsPlaying(false)}
-              onPause={() => setIsPlaying(false)}
-              onPlay={() => setIsPlaying(true)}
-            >
-              <source src="/audio2.mp3" type="audio/mpeg" />
-            </audio>
           </h2>
           <p className="text-lg md:text-xl font-normal leading-relaxed tracking-normal text-white/80">
             Product Manager with 2+ years of experience specializing in <span className="font-semibold text-white">AI-driven EdTech</span>, currently leading end-to-end product development at Edzy for scalable learning platforms serving NCERT students across India. Experienced in product strategy, user research, and data-driven growth, with a background in UX design and cross-functional collaboration. Skilled in building user-centric web and mobile solutions, with expertise in AI/ML products, Agile methodologies, and educational platforms.

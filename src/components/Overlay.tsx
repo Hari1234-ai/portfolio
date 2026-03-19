@@ -2,7 +2,7 @@
 
 import { motion, MotionValue, useTransform } from "framer-motion";
 import { Volume2 } from "lucide-react";
-import { useRef, useState } from "react";
+import { useRef, useState, useEffect } from "react";
 
 export default function Overlay({ scrollYProgress }: { scrollYProgress: MotionValue<number> }) {
   // Section 1 (0 -> 10% fade in, 15 -> 20% fade out)
@@ -21,37 +21,35 @@ export default function Overlay({ scrollYProgress }: { scrollYProgress: MotionVa
   const y3 = useTransform(scrollYProgress, [0.55, 0.6, 0.85], ["20vh", "0vh", "-100vh"]);
 
   const audioRef = useRef<HTMLAudioElement | null>(null);
-  const playPromiseRef = useRef<Promise<void> | null>(null);
   const [isPlaying, setIsPlaying] = useState(false);
   const [errorMsg, setErrorMsg] = useState<string | null>(null);
 
+  useEffect(() => {
+    const audio = new Audio("/audio1.mp3");
+    audio.preload = "auto";
+    audio.onended = () => setIsPlaying(false);
+    audio.onpause = () => setIsPlaying(false);
+    audio.onplay = () => setIsPlaying(true);
+    audioRef.current = audio;
+
+    return () => {
+      audio.pause();
+      audio.src = "";
+    };
+  }, []);
+
   const toggleAudio = async () => {
     setErrorMsg(null);
-    if (!audioRef.current) {
-      setErrorMsg("Audio element not ready");
-      return;
-    }
+    if (!audioRef.current) return;
 
-    if (isPlaying) {
-      // If a play promise is pending, we must wait for it to resolve before pausing
-      if (playPromiseRef.current) {
-        await playPromiseRef.current.catch(() => {});
-      }
+    if (!audioRef.current.paused) {
       audioRef.current.pause();
-      setIsPlaying(false);
     } else {
       try {
-        playPromiseRef.current = audioRef.current.play();
-        await playPromiseRef.current;
-        setIsPlaying(true);
+        await audioRef.current.play();
       } catch (err: any) {
-        if (err.name !== "AbortError") {
-          console.error("Audio playback failed:", err);
-          setErrorMsg(err.name === "NotAllowedError" ? "Click again to allow audio" : (err.message || "Failed to play audio"));
-        }
-        setIsPlaying(false);
-      } finally {
-        playPromiseRef.current = null;
+        console.error("Audio playback failed:", err);
+        setErrorMsg(err.name === "NotAllowedError" ? "Click again to allow audio" : (err.message || "Failed to play audio"));
       }
     }
   };
@@ -81,15 +79,6 @@ export default function Overlay({ scrollYProgress }: { scrollYProgress: MotionVa
               {errorMsg}
             </span>
           )}
-          <audio 
-            ref={audioRef} 
-            preload="auto"
-            onEnded={() => setIsPlaying(false)}
-            onPause={() => setIsPlaying(false)}
-            onPlay={() => setIsPlaying(true)}
-          >
-            <source src="/audio1.mp3" type="audio/mpeg" />
-          </audio>
         </h1>
         <p className="text-base md:text-xl text-white/80 font-light tracking-[0.3em] uppercase mt-2">
           Product Manager
