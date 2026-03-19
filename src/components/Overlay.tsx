@@ -35,11 +35,11 @@ export default function Overlay({ scrollYProgress }: { scrollYProgress: MotionVa
   };
 
   return (
-    <div className="absolute inset-0 pointer-events-none flex flex-col justify-center px-4 z-10">
+    <div className="absolute inset-0 pointer-events-none flex flex-col justify-center px-4 z-[100]">
       {/* Section 1 */}
       <motion.div
         style={{ opacity: o1, y: y1 }}
-        className="absolute inset-0 flex flex-col items-center justify-center text-center p-8 pointer-events-auto"
+        className="absolute inset-0 flex flex-col items-center justify-center text-center p-8"
       >
         <h1 className="text-3xl md:text-5xl lg:text-7xl font-medium font-monospace-custom mb-6 text-white drop-shadow-2xl leading-tight inline-flex items-center gap-4 text-left">
           <span>
@@ -47,8 +47,9 @@ export default function Overlay({ scrollYProgress }: { scrollYProgress: MotionVa
             <br />I'm Hari Krishna
           </span>
           <button 
+            type="button"
             onClick={toggleAudio}
-            className={`p-3 rounded-full bg-white/5 border border-white/10 hover:bg-white/10 hover:border-white/20 transition-all duration-300 group/audio pointer-events-auto ${isPlaying ? 'text-blue-400' : 'text-white/40'}`}
+            className={`p-3 rounded-full bg-white/5 border border-white/10 hover:bg-white/10 hover:border-white/20 transition-all duration-300 group/audio pointer-events-auto z-[100] cursor-pointer ${isPlaying ? 'text-blue-400' : 'text-white/40'}`}
             title="Listen to intro"
           >
             <Volume2 size={24} className={`transition-transform duration-300 ${isPlaying ? 'scale-110' : 'group-hover/audio:scale-110'}`} />
