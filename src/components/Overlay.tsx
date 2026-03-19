@@ -39,7 +39,7 @@ export default function Overlay({ scrollYProgress }: { scrollYProgress: MotionVa
       {/* Section 1 */}
       <motion.div
         style={{ opacity: o1, y: y1 }}
-        className="absolute inset-0 flex flex-col items-center justify-center text-center p-8"
+        className="absolute inset-0 flex flex-col items-center justify-center text-center p-8 pointer-events-auto"
       >
         <h1 className="text-3xl md:text-5xl lg:text-7xl font-medium font-monospace-custom mb-6 text-white drop-shadow-2xl leading-tight inline-flex items-center gap-4 text-left">
           <span>
@@ -56,6 +56,7 @@ export default function Overlay({ scrollYProgress }: { scrollYProgress: MotionVa
           <audio 
             ref={audioRef} 
             src="/audio1.m4a" 
+            autoPlay={false}
             onEnded={() => setIsPlaying(false)}
             onPause={() => setIsPlaying(false)}
             onPlay={() => setIsPlaying(true)}

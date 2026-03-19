@@ -164,11 +164,12 @@ export default function Resume() {
             </button>
             <audio 
               ref={audioRef} 
-              src="/audio2.m4a" 
               onEnded={() => setIsPlaying(false)}
               onPause={() => setIsPlaying(false)}
               onPlay={() => setIsPlaying(true)}
-            />
+            >
+              <source src="/audio2.m4a" type="audio/mp4" />
+            </audio>
           </h2>
           <p className="text-lg md:text-xl font-normal leading-relaxed tracking-normal text-white/80">
             Product Manager with 2+ years of experience specializing in <span className="font-semibold text-white">AI-driven EdTech</span>, currently leading end-to-end product development at Edzy for scalable learning platforms serving NCERT students across India. Experienced in product strategy, user research, and data-driven growth, with a background in UX design and cross-functional collaboration. Skilled in building user-centric web and mobile solutions, with expertise in AI/ML products, Agile methodologies, and educational platforms.
