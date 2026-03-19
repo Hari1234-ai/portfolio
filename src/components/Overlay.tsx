@@ -59,6 +59,8 @@ export default function Overlay({ scrollYProgress }: { scrollYProgress: MotionVa
             onPause={() => setIsPlaying(false)}
             onPlay={() => setIsPlaying(true)}
           >
+            {/* Remote test audio to check if playback logic is working */}
+            <source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3" type="audio/mpeg" />
             <source src="/audio1.m4a" type="audio/mp4" />
           </audio>
         </h1>
