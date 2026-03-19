@@ -79,6 +79,37 @@ export default function Resume() {
     }
   ];
 
+  const caseStudies = [
+    {
+      title: "Walletwise",
+      subtitle: "Track Smart, Spend Wise",
+      description: "A comprehensive personal finance management solution designed to help users track expenses and manage budgets intuitively.",
+      url: "https://www.behance.net/gallery/204666317/Walletwise-Track-Smart-Spend-Wise",
+      tags: ["FinTech", "Mobile App", "UI/UX"]
+    },
+    {
+      title: "Ecoshop",
+      subtitle: "Sustainably yours, today & tomorrow",
+      description: "An eco-conscious e-commerce platform promoting sustainable products and mindful consumption through a clean, nature-inspired interface.",
+      url: "https://www.behance.net/gallery/203559589/Ecoshop-sustainably-yours-today-tomorrow",
+      tags: ["E-commerce", "Sustainability", "Product Design"]
+    },
+    {
+      title: "Quickserve",
+      subtitle: "Order taking app for waiters",
+      description: "A streamlined digital ordering system for hospitality staff, focusing on speed, accuracy, and operational efficiency in high-pressure environments.",
+      url: "https://www.behance.net/gallery/203219799/Quickserve-Orders-taking-app-for-waiters-UI",
+      tags: ["B2B", "Service Design", "Waitstaff App"]
+    },
+    {
+      title: "Precise",
+      subtitle: "The research library",
+      description: "A digital research repository for educational institutions, optimizing information gathering and organization for students and academics.",
+      url: "https://www.behance.net/gallery/199440613/Precise-The-research-library",
+      tags: ["EdTech", "Knowledge Management", "LMS"]
+    }
+  ];
+
   return (
     <section className="relative w-full bg-[#0a0a0a] py-32 px-6 md:px-24 z-20 text-white font-sans overflow-x-hidden">
       <div className="max-w-6xl mx-auto space-y-32">
@@ -242,6 +273,61 @@ export default function Resume() {
                 </motion.div>
               ))}
             </div>
+          </div>
+        </div>
+
+        {/* UX Case Studies Section */}
+        <div className="space-y-16">
+          <motion.h3 
+            initial={{ opacity: 0, x: -20 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            className="text-4xl md:text-6xl font-black tracking-tighter flex items-center gap-6"
+          >
+            <span className="w-12 h-12 md:w-16 md:h-16 rounded-full bg-white/10 flex items-center justify-center text-sm font-normal text-white">04</span>
+            UX Case Studies
+          </motion.h3>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+            {caseStudies.map((project, i) => (
+              <motion.a
+                key={i}
+                href={project.url}
+                target="_blank"
+                rel="noreferrer"
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, margin: "-50px" }}
+                transition={{ duration: 0.5, delay: i * 0.1 }}
+                className="glass p-8 md:p-10 rounded-[2rem] border border-white/5 hover:bg-white/5 hover:border-white/10 transition-all duration-500 group relative overflow-hidden flex flex-col"
+              >
+                <div className="absolute top-0 right-0 w-48 h-48 bg-white/5 rounded-full blur-3xl -mr-24 -mt-24 opacity-0 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none"></div>
+                
+                <div className="relative z-10 flex flex-col h-full">
+                  <div className="flex justify-between items-start mb-6">
+                    <div>
+                      <h4 className="text-2xl md:text-3xl font-bold mb-1 group-hover:translate-x-2 transition-transform duration-300">{project.title}</h4>
+                      <p className="text-white/50 text-sm font-medium tracking-wide uppercase">{project.subtitle}</p>
+                    </div>
+                    <div className="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center group-hover:bg-white text-white group-hover:text-black transition-all duration-300">
+                      <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M7 7h10v10"/><path d="M7 17L17 7"/></svg>
+                    </div>
+                  </div>
+                  
+                  <p className="text-white/70 text-lg font-light leading-relaxed mb-8 flex-1">
+                    {project.description}
+                  </p>
+                  
+                  <div className="flex flex-wrap gap-2">
+                    {project.tags.map((tag, j) => (
+                      <span key={j} className="px-3 py-1 rounded-full border border-white/5 bg-white/[0.02] text-[10px] uppercase tracking-widest text-white/40 group-hover:border-white/10 transition-colors">
+                        {tag}
+                      </span>
+                    ))}
+                  </div>
+                </div>
+              </motion.a>
+            ))}
           </div>
         </div>
 
