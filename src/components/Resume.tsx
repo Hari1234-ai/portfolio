@@ -130,8 +130,8 @@ export default function Resume() {
           </p>
         </motion.div>
 
-        {/* Experience Section */}
-        <div className="space-y-16">
+        {/* Experience Section - Vertical Timeline */}
+        <div className="space-y-16 relative">
           <motion.h3 
             initial={{ opacity: 0, x: -20 }}
             whileInView={{ opacity: 1, x: 0 }}
@@ -142,69 +142,73 @@ export default function Resume() {
             Experience
           </motion.h3>
 
-          <div className="grid grid-cols-1 gap-8">
-            {experiences.map((exp, i) => (
-              <motion.div
-                key={i}
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, margin: "-50px" }}
-                transition={{ duration: 0.5, delay: i * 0.1 }}
-                className="glass p-8 md:p-12 rounded-[2rem] border border-white/5 hover:bg-white/5 hover:border-white/10 transition-all duration-500 group relative overflow-hidden flex flex-col xl:flex-row gap-12 items-center"
-              >
-                <div className="absolute top-0 right-0 w-64 h-64 bg-white/5 rounded-full blur-3xl -mr-32 -mt-32 opacity-0 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none"></div>
-                
-                <div className="flex-1 w-full relative z-10 flex flex-col justify-center">
-                  <div className="flex flex-col mb-8">
-                    <div className="flex items-center gap-6 w-full">
-                      {exp.logo && (
-                        <a href={exp.url} target="_blank" rel="noreferrer" className="shrink-0 transition-transform duration-300 hover:scale-105">
-                          <div className="w-16 h-16 md:w-20 md:h-20 rounded-2xl bg-white/5 border border-white/10 flex items-center justify-center overflow-hidden shadow-xl">
-                            {/* eslint-disable-next-line @next/next/no-img-element */}
-                            <img src={exp.logo} alt={`${exp.company} logo`} className="w-full h-full object-cover" />
+          <div className="relative pl-8 md:pl-20 py-8">
+            {/* The Vertical Line */}
+            <div className="absolute left-[15px] md:left-[31px] top-0 bottom-0 w-px bg-gradient-to-b from-white/0 via-white/20 to-white/0"></div>
+            
+            <div className="space-y-24">
+              {experiences.map((exp, i) => (
+                <motion.div
+                  key={i}
+                  initial={{ opacity: 0, x: 20 }}
+                  whileInView={{ opacity: 1, x: 0 }}
+                  viewport={{ once: true, margin: "-100px" }}
+                  transition={{ duration: 0.6, delay: i * 0.1 }}
+                  className="relative"
+                >
+                  {/* Timeline Dot/Marker */}
+                  <div className="absolute -left-[33px] md:-left-[57px] top-0 w-8 h-8 md:w-12 md:h-12 flex items-center justify-center z-10">
+                    <div className="w-3 h-3 md:w-4 md:h-4 rounded-full bg-white shadow-[0_0_15px_rgba(255,255,255,0.8)]"></div>
+                  </div>
+
+                  <div className="glass p-8 md:p-12 rounded-[2.5rem] border border-white/5 hover:bg-white/5 hover:border-white/10 transition-all duration-500 group relative overflow-hidden flex flex-col xl:flex-row gap-12 items-center">
+                    <div className="absolute top-0 right-0 w-64 h-64 bg-white/5 rounded-full blur-3xl -mr-32 -mt-32 opacity-0 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none"></div>
+                    
+                    <div className="flex-1 w-full relative z-10">
+                      <div className="flex flex-col mb-8">
+                        <div className="flex items-center gap-6">
+                          {exp.logo && (
+                            <div className="w-14 h-14 md:w-16 md:h-16 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center overflow-hidden shrink-0">
+                               <img src={exp.logo} alt={exp.company} className="w-full h-full object-cover" />
+                            </div>
+                          )}
+                          <div>
+                            <p className="text-white/40 text-sm font-mono tracking-widest uppercase mb-1">{exp.duration}</p>
+                            <h4 className="text-2xl md:text-3xl font-bold">{exp.role}</h4>
+                            <p className="text-white/60 text-base">
+                              <a href={exp.url} target="_blank" rel="noreferrer" className="hover:text-white transition-colors">{exp.company}</a>
+                              <span className="mx-2 opacity-30">/</span>
+                              <span className="text-white/40">{exp.location}</span>
+                            </p>
                           </div>
-                        </a>
-                      )}
-                      <div className="w-full">
-                        <h4 className="text-2xl md:text-4xl font-bold mb-2 group-hover:translate-x-2 transition-transform duration-300">{exp.role}</h4>
-                        <p className="text-sm md:text-base text-white/60 font-medium flex flex-wrap items-center gap-2">
-                          <a href={exp.url} target="_blank" rel="noreferrer" className="hover:text-white transition-colors">
-                            {exp.company}
-                          </a>
-                          <span className="hidden md:inline">&mdash;</span>
-                          <span className="text-white/40">{exp.location}</span>
-                          <span className="text-white/20 text-xs md:text-sm mx-1">•</span>
-                          <span className="text-white/40 text-xs md:text-sm font-light">{exp.duration}</span>
-                        </p>
+                        </div>
                       </div>
-                    </div>
-                  </div>
 
-                  <ul className="space-y-4">
-                    {exp.points.map((point, j) => (
-                      <li key={j} className="text-white/70 text-lg font-light flex items-start leading-relaxed">
-                        <span className="text-white/30 mr-4 mt-1.5">•</span>
-                        <span>{point}</span>
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-
-                {exp.sideImage && (
-                  <div className="w-full xl:w-5/12 relative z-10 flex items-center justify-center shrink-0 mt-8 xl:mt-0">
-                    <div className="glass w-full p-6 md:p-8 rounded-[2rem] border border-white/10 bg-white/[0.03] shadow-2xl flex items-center justify-center group-hover:bg-white/5 group-hover:border-white/20 transition-all duration-500 overflow-hidden relative">
-                      <div className="absolute inset-0 bg-gradient-to-tr from-white/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none"></div>
-                      {/* eslint-disable-next-line @next/next/no-img-element */}
-                      <img 
-                        src={exp.sideImage} 
-                        alt={`${exp.company} product mockup`} 
-                        className="w-full h-auto object-contain max-h-[300px] xl:max-h-[400px] hover:scale-105 transition-transform duration-700 drop-shadow-[0_10px_30px_rgba(0,0,0,0.5)] z-10 relative" 
-                      />
+                      <ul className="space-y-4">
+                        {exp.points.map((point, j) => (
+                          <li key={j} className="text-white/70 text-lg font-light flex items-start leading-relaxed">
+                            <span className="text-white/30 mr-4 mt-1.5 shrink-0">•</span>
+                            <span>{point}</span>
+                          </li>
+                        ))}
+                      </ul>
                     </div>
+
+                    {exp.sideImage && (
+                      <div className="w-full xl:w-5/12 relative z-10 flex items-center justify-center shrink-0 mt-8 xl:mt-0">
+                        <div className="glass w-full p-4 rounded-2xl border border-white/10 bg-white/[0.03] shadow-xl overflow-hidden group-hover:bg-white/5 transition-all duration-500">
+                          <img 
+                            src={exp.sideImage} 
+                            alt="Mockup" 
+                            className="w-full h-auto object-contain max-h-[300px] group-hover:scale-105 transition-transform duration-700" 
+                          />
+                        </div>
+                      </div>
+                    )}
                   </div>
-                )}
-              </motion.div>
-            ))}
+                </motion.div>
+              ))}
+            </div>
           </div>
         </div>
 
