@@ -142,9 +142,9 @@ export default function Resume() {
             Experience
           </motion.h3>
 
-          <div className="relative pl-8 md:pl-20 py-8">
-            {/* The Vertical Line */}
-            <div className="absolute left-[15px] md:left-[31px] top-0 bottom-0 w-px bg-gradient-to-b from-white/0 via-white/20 to-white/0"></div>
+          <div className="relative pl-12 md:pl-32 py-8">
+            {/* The Vertical Line - Centered in the gutter */}
+            <div className="absolute left-[24px] md:left-[64px] top-0 bottom-0 w-px bg-gradient-to-b from-white/0 via-white/20 to-white/0"></div>
             
             <div className="space-y-24">
               {experiences.map((exp, i) => (
@@ -156,9 +156,9 @@ export default function Resume() {
                   transition={{ duration: 0.6, delay: i * 0.1 }}
                   className="relative"
                 >
-                  {/* Timeline Dot/Marker */}
-                  <div className="absolute -left-[33px] md:-left-[57px] top-0 w-8 h-8 md:w-12 md:h-12 flex items-center justify-center z-10">
-                    <div className="w-3 h-3 md:w-4 md:h-4 rounded-full bg-white shadow-[0_0_15px_rgba(255,255,255,0.8)]"></div>
+                  {/* Timeline Dot/Marker - Centered on the line */}
+                  <div className="absolute -left-[24px] md:-left-[64px] top-0 w-px flex items-center justify-center z-10">
+                    <div className="w-3 h-3 md:w-4 md:h-4 shrink-0 rounded-full bg-white shadow-[0_0_15px_rgba(255,255,255,0.8)] -translate-x-1/2"></div>
                   </div>
 
                   <div className="glass p-8 md:p-12 rounded-[2.5rem] border border-white/5 hover:bg-white/5 hover:border-white/10 transition-all duration-500 group relative overflow-hidden flex flex-col xl:flex-row gap-12 items-center">
