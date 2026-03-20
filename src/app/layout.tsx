@@ -38,6 +38,7 @@ export default function RootLayout({
               (function() {
                 try {
                   const themes = [
+                    { id: "white", color: "#ffffff", glow: "rgba(255, 255, 255, 0.3)" },
                     { id: "blue", color: "#38bdf8", glow: "rgba(56, 189, 248, 0.3)" },
                     { id: "rose", color: "#e11d48", glow: "rgba(225, 29, 72, 0.3)" },
                     { id: "teal", color: "#2dd4bf", glow: "rgba(45, 212, 191, 0.3)" },

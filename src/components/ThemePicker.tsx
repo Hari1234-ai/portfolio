@@ -4,6 +4,7 @@ import { useState, useEffect } from "react";
 import { Check } from "lucide-react";
 
 const themes = [
+  { id: "white", name: "White", color: "#ffffff", glow: "rgba(255, 255, 255, 0.3)" },
   { id: "blue", name: "Blue", color: "#38bdf8", glow: "rgba(56, 189, 248, 0.3)" },
   { id: "rose", name: "Rose", color: "#e11d48", glow: "rgba(225, 29, 72, 0.3)" },
   { id: "teal", name: "Teal", color: "#2dd4bf", glow: "rgba(45, 212, 191, 0.3)" },
@@ -12,7 +13,7 @@ const themes = [
 ];
 
 export default function ThemePicker() {
-  const [activeTheme, setActiveTheme] = useState("blue");
+  const [activeTheme, setActiveTheme] = useState("white");
 
   useEffect(() => {
     // Load saved theme

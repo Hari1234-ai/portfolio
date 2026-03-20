@@ -3,8 +3,8 @@
 :root {
   --background: #121212;
   --foreground: #ffffff;
-  --accent-primary: #38bdf8;
-  --accent-glow: rgba(56, 189, 248, 0.3);
+  --accent-primary: #ffffff;
+  --accent-glow: rgba(255, 255, 255, 0.3);
   --accent-text: #ffffff; /* This will be dynamic */
 }
 
