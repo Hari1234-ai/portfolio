@@ -62,15 +62,7 @@ export default function Overlay({ scrollYProgress }: { scrollYProgress: MotionVa
         className="absolute inset-0 flex flex-col items-center justify-center text-center p-8"
       >
         <h1 className="text-3xl md:text-5xl lg:text-7xl font-medium font-monospace-custom mb-6 text-accent-text drop-shadow-2xl leading-tight relative inline-flex flex-col md:flex-row items-center gap-6">
-          <div className="w-24 h-24 md:w-32 md:h-32 rounded-full border-2 border-accent overflow-hidden shrink-0 shadow-2xl group/profile relative">
-            <img 
-              src="/profile.png" 
-              alt="Hari Krishna" 
-              className="w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-500 scale-110 hover:scale-100"
-              onError={(e) => { e.currentTarget.src = 'https://api.dicebear.com/7.x/initials/svg?seed=HK&backgroundColor=transparent&fontFamily=Inter&fontWeight=700'; }}
-            />
-          </div>
-          <span className="text-center md:text-left">
+          <span className="text-center">
             Hello,
             <br />I'm Hari Krishna
           </span>
