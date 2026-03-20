@@ -5,11 +5,13 @@
   --foreground: #ffffff;
   --accent-primary: #38bdf8;
   --accent-glow: rgba(56, 189, 248, 0.3);
+  --accent-text: #ffffff; /* This will be dynamic */
 }
 
 @theme {
   --color-accent: var(--accent-primary);
   --color-accent-glow: var(--accent-glow);
+  --color-accent-text: var(--accent-text);
 }
 
 .font-monospace-custom {

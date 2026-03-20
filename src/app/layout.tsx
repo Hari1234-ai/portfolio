@@ -50,6 +50,7 @@ export default function RootLayout({
                     if (theme) {
                       document.documentElement.style.setProperty("--accent-primary", theme.color);
                       document.documentElement.style.setProperty("--accent-glow", theme.glow);
+                      document.documentElement.style.setProperty("--accent-text", theme.color);
                     }
                   }
                 } catch (e) {

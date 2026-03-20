@@ -130,7 +130,7 @@ export default function Resume() {
       description: "A comprehensive personal finance management solution designed to help users track expenses and manage budgets intuitively.",
       url: "https://www.behance.net/gallery/204666317/Walletwise-Track-Smart-Spend-Wise",
       image: walletwiseImg,
-      icon: <Wallet className="w-6 h-6 text-white/40" />,
+      icon: <Wallet className="w-6 h-6 text-accent-text/40" />,
       tags: ["FinTech", "Mobile App", "UI/UX"]
     },
     {
@@ -139,7 +139,7 @@ export default function Resume() {
       description: "An eco-conscious e-commerce platform promoting sustainable products and mindful consumption through a clean, nature-inspired interface.",
       url: "https://www.behance.net/gallery/203559589/Ecoshop-sustainably-yours-today-tomorrow",
       image: ecoshopImg,
-      icon: <Leaf className="w-6 h-6 text-white/40" />,
+      icon: <Leaf className="w-6 h-6 text-accent-text/40" />,
       tags: ["E-commerce", "Sustainability", "Product Design"]
     },
     {
@@ -148,7 +148,7 @@ export default function Resume() {
       description: "A streamlined digital ordering system for hospitality staff, focusing on speed, accuracy, and operational efficiency in high-pressure environments.",
       url: "https://www.behance.net/gallery/203219799/Quickserve-Orders-taking-app-for-waiters-UI",
       image: quickserveImg,
-      icon: <Utensils className="w-6 h-6 text-white/40" />,
+      icon: <Utensils className="w-6 h-6 text-accent-text/40" />,
       tags: ["B2B", "Service Design", "Waitstaff App"]
     },
     {
@@ -157,13 +157,13 @@ export default function Resume() {
       description: "A digital research repository for educational institutions, optimizing information gathering and organization for students and academics.",
       url: "https://www.behance.net/gallery/199440613/Precise-The-research-library",
       image: preciseImg,
-      icon: <Library className="w-6 h-6 text-white/40" />,
+      icon: <Library className="w-6 h-6 text-accent-text/40" />,
       tags: ["EdTech", "Knowledge Management", "LMS"]
     }
   ];
 
   return (
-    <section className="relative w-full bg-[#0a0a0a] py-32 px-6 md:px-24 z-20 text-white font-sans overflow-x-hidden">
+    <section className="relative w-full bg-[#0a0a0a] py-32 px-6 md:px-24 z-20 text-accent-text font-sans overflow-x-hidden">
       <div className="max-w-6xl mx-auto space-y-32">
         
         {/* Theme Switching System */}
@@ -177,12 +177,12 @@ export default function Resume() {
           transition={{ duration: 0.8 }}
           className="w-full"
         >
-          <h2 className="text-xl md:text-2xl font-light text-white/60 uppercase tracking-[0.2em] mb-4 flex items-center gap-4 relative">
+          <h2 className="text-xl md:text-2xl font-light text-accent-text/60 uppercase tracking-[0.2em] mb-4 flex items-center gap-4 relative">
             About Me
             <button 
               type="button"
               onClick={toggleAudio}
-              className={`p-2 rounded-full bg-white/5 border border-white/10 hover:bg-white/10 hover:border-white/20 transition-all duration-300 group/audio z-[100] cursor-pointer ${isPlaying ? 'text-accent' : 'text-white/40'}`}
+              className={`p-2 rounded-full bg-accent/5 border border-accent/10 hover:bg-accent/10 hover:border-accent/20 transition-all duration-300 group/audio z-[100] cursor-pointer ${isPlaying ? 'text-accent' : 'text-accent-text/40'}`}
               title="Listen to story"
             >
               <Volume2 size={18} className={`transition-transform duration-300 ${isPlaying ? 'scale-110' : 'group-hover/audio:scale-110'}`} />
@@ -193,8 +193,8 @@ export default function Resume() {
               </span>
             )}
           </h2>
-          <p className="text-lg md:text-xl font-normal leading-relaxed tracking-normal text-white/80">
-            Product Manager with 2+ years of experience specializing in <span className="font-semibold text-white">AI-driven EdTech</span>, currently leading end-to-end product development at Edzy for scalable learning platforms serving NCERT students across India. Experienced in product strategy, user research, and data-driven growth, with a background in UX design and cross-functional collaboration. Skilled in building user-centric web and mobile solutions, with expertise in AI/ML products, Agile methodologies, and educational platforms.
+          <p className="text-lg md:text-xl font-normal leading-relaxed tracking-normal text-accent-text/80">
+            Product Manager with 2+ years of experience specializing in <span className="font-semibold text-accent-text">AI-driven EdTech</span>, currently leading end-to-end product development at Edzy for scalable learning platforms serving NCERT students across India. Experienced in product strategy, user research, and data-driven growth, with a background in UX design and cross-functional collaboration. Skilled in building user-centric web and mobile solutions, with expertise in AI/ML products, Agile methodologies, and educational platforms.
           </p>
         </motion.div>
 
@@ -206,7 +206,7 @@ export default function Resume() {
             viewport={{ once: true }}
             className="text-4xl md:text-6xl font-black tracking-tighter flex items-center gap-6"
           >
-            <span className="w-12 h-12 md:w-16 md:h-16 rounded-full bg-white/10 flex items-center justify-center text-white">
+            <span className="w-12 h-12 md:w-16 md:h-16 rounded-full bg-accent/10 flex items-center justify-center text-accent-text">
               <BriefcaseBusiness size={24} className="md:w-8 md:h-8" />
             </span>
             Experience
@@ -214,7 +214,7 @@ export default function Resume() {
 
           <div className="relative pl-12 md:pl-32 py-8">
             {/* The Vertical Line - Centered in the gutter */}
-            <div className="absolute left-[24px] md:left-[64px] top-0 bottom-0 w-px bg-gradient-to-b from-white/0 via-white/20 to-white/0"></div>
+            <div className="absolute left-[24px] md:left-[64px] top-0 bottom-0 w-px bg-gradient-to-b from-white/0 via-accent/20 to-white/0"></div>
             
             <div className="space-y-24">
               {experiences.map((exp, i) => (
@@ -227,26 +227,26 @@ export default function Resume() {
                   className="relative"
                 >
                   {/* Horizontal Connection Line - Centered on the card's height */}
-                  <div className="absolute -left-[24px] md:-left-[64px] top-1/2 w-[24px] md:w-[64px] h-px bg-white/20 z-10 pointer-events-none"></div>
+                  <div className="absolute -left-[24px] md:-left-[64px] top-1/2 w-[24px] md:w-[64px] h-px bg-accent/20 z-10 pointer-events-none"></div>
 
-                  <div className="glass p-8 md:p-12 rounded-[2.5rem] border border-white/5 hover:bg-white/5 hover:border-white/10 transition-all duration-500 group relative overflow-hidden flex flex-col xl:flex-row gap-12 items-center">
-                    <div className="absolute top-0 right-0 w-64 h-64 bg-white/5 rounded-full blur-3xl -mr-32 -mt-32 opacity-0 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none"></div>
+                  <div className="glass p-8 md:p-12 rounded-[2.5rem] border border-accent/5 hover:bg-accent/5 hover:border-accent/10 transition-all duration-500 group relative overflow-hidden flex flex-col xl:flex-row gap-12 items-center">
+                    <div className="absolute top-0 right-0 w-64 h-64 bg-accent/5 rounded-full blur-3xl -mr-32 -mt-32 opacity-0 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none"></div>
                     
                     <div className="flex-1 w-full relative z-10">
                       <div className="flex flex-col mb-8">
                         <div className="flex items-center gap-6">
                           {exp.logo && (
-                            <div className="w-14 h-14 md:w-16 md:h-16 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center overflow-hidden shrink-0">
+                            <div className="w-14 h-14 md:w-16 md:h-16 rounded-xl bg-accent/5 border border-accent/10 flex items-center justify-center overflow-hidden shrink-0">
                                <img src={exp.logo} alt={exp.company} className="w-full h-full object-cover" />
                             </div>
                           )}
                           <div>
-                            <p className="text-white/40 text-sm font-mono tracking-widest uppercase mb-1">{exp.duration}</p>
+                            <p className="text-accent-text/40 text-sm font-mono tracking-widest uppercase mb-1">{exp.duration}</p>
                             <h4 className="text-2xl md:text-3xl font-bold">{exp.role}</h4>
-                            <p className="text-white/60 text-base">
-                              <a href={exp.url} target="_blank" rel="noreferrer" className="hover:text-white transition-colors">{exp.company}</a>
+                            <p className="text-accent-text/60 text-base">
+                              <a href={exp.url} target="_blank" rel="noreferrer" className="hover:text-accent-text transition-colors">{exp.company}</a>
                               <span className="mx-2 opacity-30">/</span>
-                              <span className="text-white/40">{exp.location}</span>
+                              <span className="text-accent-text/40">{exp.location}</span>
                             </p>
                           </div>
                         </div>
@@ -254,8 +254,8 @@ export default function Resume() {
 
                       <ul className="space-y-4">
                         {exp.points.map((point, j) => (
-                          <li key={j} className="text-white/70 text-lg font-light flex items-start leading-relaxed">
-                            <span className="text-white/30 mr-4 mt-1.5 shrink-0">•</span>
+                          <li key={j} className="text-accent-text/70 text-lg font-light flex items-start leading-relaxed">
+                            <span className="text-accent-text/30 mr-4 mt-1.5 shrink-0">•</span>
                             <span>{point}</span>
                           </li>
                         ))}
@@ -264,7 +264,7 @@ export default function Resume() {
 
                     {exp.sideImage && (
                       <div className="w-full xl:w-5/12 relative z-10 flex items-center justify-center shrink-0 mt-8 xl:mt-0">
-                        <div className="glass w-full p-4 rounded-2xl border border-white/10 bg-white/[0.03] shadow-xl overflow-hidden group-hover:bg-white/5 transition-all duration-500">
+                        <div className="glass w-full p-4 rounded-2xl border border-accent/10 bg-accent/[0.03] shadow-xl overflow-hidden group-hover:bg-accent/5 transition-all duration-500">
                           <img 
                             src={exp.sideImage} 
                             alt="Mockup" 
@@ -288,7 +288,7 @@ export default function Resume() {
             viewport={{ once: true }}
             className="text-4xl md:text-6xl font-black tracking-tighter flex items-center gap-6"
           >
-            <span className="w-12 h-12 md:w-16 md:h-16 rounded-full bg-white/10 flex items-center justify-center text-white">
+            <span className="w-12 h-12 md:w-16 md:h-16 rounded-full bg-accent/10 flex items-center justify-center text-accent-text">
               <Brush size={24} className="md:w-8 md:h-8" />
             </span>
             UX Case Studies
@@ -305,14 +305,14 @@ export default function Resume() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, margin: "-50px" }}
                 transition={{ duration: 0.5, delay: i * 0.1 }}
-                className="glass p-8 md:p-10 rounded-[2rem] border border-white/5 hover:bg-white/5 hover:border-white/10 transition-all duration-500 group relative overflow-hidden flex flex-col min-w-[300px] md:min-w-[450px] snap-start"
+                className="glass p-8 md:p-10 rounded-[2rem] border border-accent/5 hover:bg-accent/5 hover:border-accent/10 transition-all duration-500 group relative overflow-hidden flex flex-col min-w-[300px] md:min-w-[450px] snap-start"
               >
-                <div className="absolute top-0 right-0 w-48 h-48 bg-white/5 rounded-full blur-3xl -mr-24 -mt-24 opacity-0 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none"></div>
+                <div className="absolute top-0 right-0 w-48 h-48 bg-accent/5 rounded-full blur-3xl -mr-24 -mt-24 opacity-0 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none"></div>
                 
                 <div className="relative z-10 flex flex-col h-full">
                   <div className="flex justify-between items-start mb-6">
                     <div className="flex items-center gap-4">
-                      <div className="w-12 h-12 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center overflow-hidden shrink-0 group-hover:scale-110 transition-transform duration-500">
+                      <div className="w-12 h-12 rounded-xl bg-accent/5 border border-accent/10 flex items-center justify-center overflow-hidden shrink-0 group-hover:scale-110 transition-transform duration-500">
                         {project.image ? (
                           <Image 
                             src={project.image} 
@@ -325,21 +325,21 @@ export default function Resume() {
                       </div>
                       <div>
                         <h4 className="text-2xl md:text-3xl font-bold mb-1 group-hover:translate-x-2 transition-transform duration-300">{project.title}</h4>
-                        <p className="text-white/50 text-sm font-medium tracking-wide uppercase">{project.subtitle}</p>
+                        <p className="text-accent-text/50 text-sm font-medium tracking-wide uppercase">{project.subtitle}</p>
                       </div>
                     </div>
-                    <div className="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center group-hover:bg-white text-white group-hover:text-black transition-all duration-300">
+                    <div className="w-10 h-10 rounded-full bg-accent/5 flex items-center justify-center group-hover:bg-accent text-accent-text group-hover:text-black transition-all duration-300">
                       <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M7 7h10v10"/><path d="M7 17L17 7"/></svg>
                     </div>
                   </div>
                   
-                  <p className="text-white/70 text-lg font-light leading-relaxed mb-8 flex-1">
+                  <p className="text-accent-text/70 text-lg font-light leading-relaxed mb-8 flex-1">
                     {project.description}
                   </p>
                   
                   <div className="flex flex-wrap gap-2">
                     {project.tags.map((tag, j) => (
-                      <span key={j} className="px-3 py-1 rounded-full border border-white/5 bg-white/[0.02] text-[10px] uppercase tracking-widest text-white/40 group-hover:border-white/10 transition-colors">
+                      <span key={j} className="px-3 py-1 rounded-full border border-accent/5 bg-accent/[0.02] text-[10px] uppercase tracking-widest text-accent-text/40 group-hover:border-accent/10 transition-colors">
                         {tag}
                       </span>
                     ))}
@@ -358,7 +358,7 @@ export default function Resume() {
             viewport={{ once: true }}
             className="text-4xl md:text-5xl font-black tracking-tighter flex items-center gap-4"
           >
-            <span className="w-12 h-12 md:w-16 md:h-16 rounded-full bg-white/10 flex items-center justify-center text-white">
+            <span className="w-12 h-12 md:w-16 md:h-16 rounded-full bg-accent/10 flex items-center justify-center text-accent-text">
               <PencilRuler size={24} className="md:w-8 md:h-8" />
             </span>
             Expertise
@@ -372,12 +372,12 @@ export default function Resume() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: i * 0.1 }}
-                className="p-8 rounded-3xl bg-white/[0.02] border border-white/5"
+                className="p-8 rounded-3xl bg-accent/[0.02] border border-accent/5"
               >
-                <h4 className="text-lg uppercase tracking-widest text-white/50 mb-6 font-semibold">{cat.name}</h4>
+                <h4 className="text-lg uppercase tracking-widest text-accent-text/50 mb-6 font-semibold">{cat.name}</h4>
                 <div className="flex flex-wrap gap-3">
                   {cat.skills.map((skill, j) => (
-                    <span key={j} className="px-4 py-2 rounded-full border border-white/10 bg-white/5 text-sm text-white/80 hover:bg-white/20 transition-colors cursor-default">
+                    <span key={j} className="px-4 py-2 rounded-full border border-accent/10 bg-accent/5 text-sm text-accent-text/80 hover:bg-accent/20 transition-colors cursor-default">
                       {skill}
                     </span>
                   ))}
@@ -395,7 +395,7 @@ export default function Resume() {
             viewport={{ once: true }}
             className="text-4xl md:text-5xl font-black tracking-tighter flex items-center gap-4"
           >
-            <span className="w-12 h-12 md:w-16 md:h-16 rounded-full bg-white/10 flex items-center justify-center text-white">
+            <span className="w-12 h-12 md:w-16 md:h-16 rounded-full bg-accent/10 flex items-center justify-center text-accent-text">
               <GraduationCap size={24} className="md:w-8 md:h-8" />
             </span>
             Education
@@ -409,11 +409,11 @@ export default function Resume() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: i * 0.1 }}
-                className="p-8 rounded-3xl bg-white/[0.02] border border-white/5 hover:bg-white/5 hover:border-white/10 transition-all duration-300"
+                className="p-8 rounded-3xl bg-accent/[0.02] border border-accent/5 hover:bg-accent/5 hover:border-accent/10 transition-all duration-300"
               >
-                <p className="text-white/50 text-sm mb-2 font-mono">{edu.duration}</p>
+                <p className="text-accent-text/50 text-sm mb-2 font-mono">{edu.duration}</p>
                 <h4 className="text-xl md:text-2xl font-bold mb-2">{edu.degree}</h4>
-                <p className="text-white/70 font-light">{edu.school}</p>
+                <p className="text-accent-text/70 font-light">{edu.school}</p>
               </motion.div>
             ))}
           </div>
@@ -424,18 +424,18 @@ export default function Resume() {
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
           viewport={{ once: true }}
-          className="pt-24 border-t border-white/10 flex flex-col md:flex-row items-start md:items-center justify-between gap-8"
+          className="pt-24 border-t border-accent/10 flex flex-col md:flex-row items-start md:items-center justify-between gap-8"
         >
           <div>
             <h2 className="text-4xl md:text-6xl font-black tracking-tighter mb-4">Let's Talk.</h2>
-            <p className="text-white/60 text-lg">Currently available for new opportunities.</p>
+            <p className="text-accent-text/60 text-lg">Currently available for new opportunities.</p>
           </div>
           <div className="flex flex-col gap-2">
-            <a href="mailto:hari@edzy.ai" className="text-xl md:text-2xl hover:text-white/70 transition-colors underline decoration-white/20 underline-offset-8">hari@edzy.ai</a>
-            <p className="text-white/50">Hyderabad, India • +91 6301374802</p>
+            <a href="mailto:hari@edzy.ai" className="text-xl md:text-2xl hover:text-accent-text/70 transition-colors underline decoration-accent/20 underline-offset-8">hari@edzy.ai</a>
+            <p className="text-accent-text/50">Hyderabad, India • +91 6301374802</p>
             <div className="flex gap-4 mt-6">
-              <a href="https://www.linkedin.com/in/hari-krishna-chenna-54014124b/" target="_blank" rel="noreferrer" className="px-6 py-3 rounded-full bg-white text-black font-semibold hover:bg-white/80 transition-colors">LinkedIn</a>
-              <a href="https://www.behance.net/harichenna1" target="_blank" rel="noreferrer" className="px-6 py-3 rounded-full border border-white/20 hover:bg-white/10 transition-colors">Behance</a>
+              <a href="https://www.linkedin.com/in/hari-krishna-chenna-54014124b/" target="_blank" rel="noreferrer" className="px-6 py-3 rounded-full bg-accent text-black font-semibold hover:bg-accent/80 transition-colors">LinkedIn</a>
+              <a href="https://www.behance.net/harichenna1" target="_blank" rel="noreferrer" className="px-6 py-3 rounded-full border border-accent/20 hover:bg-accent/10 transition-colors">Behance</a>
             </div>
           </div>
         </motion.div>

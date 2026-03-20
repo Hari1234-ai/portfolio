@@ -30,6 +30,7 @@ export default function ThemePicker() {
     const root = document.documentElement;
     root.style.setProperty("--accent-primary", theme.color);
     root.style.setProperty("--accent-glow", theme.glow);
+    root.style.setProperty("--accent-text", theme.color);
     localStorage.setItem("portfolio-theme", theme.id);
   };
 
@@ -40,7 +41,7 @@ export default function ThemePicker() {
 
   return (
     <div className="flex items-center justify-center gap-4 py-8">
-      <div className="flex items-center gap-3 p-2 bg-white/5 backdrop-blur-md rounded-2xl border border-white/10 shadow-2xl">
+      <div className="flex items-center gap-3 p-2 bg-accent/5 backdrop-blur-md rounded-2xl border border-accent/10 shadow-2xl">
         {themes.map((theme) => (
           <button
             key={theme.id}
@@ -51,10 +52,10 @@ export default function ThemePicker() {
           >
             {activeTheme === theme.id ? (
               <div className="bg-black/20 w-full h-full flex items-center justify-center backdrop-blur-[2px]">
-                <Check className="text-white w-5 h-5 md:w-6 md:h-6" />
+                <Check className="text-accent-text w-5 h-5 md:w-6 md:h-6" />
               </div>
             ) : (
-              <div className="absolute inset-0 bg-white/0 group-hover:bg-white/10 transition-colors" />
+              <div className="absolute inset-0 bg-white/0 group-hover:bg-accent/10 transition-colors" />
             )}
           </button>
         ))}

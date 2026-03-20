@@ -149,21 +149,21 @@ export default function ScrollyCanvas() {
         {!loaded && (
           <div className="absolute inset-0 flex flex-col items-center justify-center bg-[#0a0a0a] z-50 text-white">
             <div className="flex flex-col items-center animate-pulse-slow">
-              <h1 className="text-2xl md:text-4xl font-light tracking-[0.3em] uppercase text-white/90 mb-12 flex flex-col items-center gap-3">
+              <h1 className="text-2xl md:text-4xl font-light tracking-[0.3em] uppercase text-accent-text/90 mb-12 flex flex-col items-center gap-3">
                 <span className="font-black drop-shadow-lg">Hari Krishna</span>
-                <span className="text-xs md:text-sm tracking-[0.6em] text-white/40">Portfolio</span>
+                <span className="text-xs md:text-sm tracking-[0.6em] text-accent-text/40">Portfolio</span>
               </h1>
               
               <div className="flex flex-col items-center w-64 md:w-80">
-                <div className="h-[2px] w-full bg-white/10 rounded-full overflow-hidden relative mb-4">
+                <div className="h-[2px] w-full bg-accent/10 rounded-full overflow-hidden relative mb-4">
                    <div 
-                     className="absolute top-0 left-0 h-full bg-white shadow-[0_0_10px_rgba(255,255,255,0.5)] transition-all duration-300 ease-out"
+                     className="absolute top-0 left-0 h-full bg-accent shadow-[0_0_10px_var(--accent-glow)] transition-all duration-300 ease-out"
                      style={{ width: `${progress}%` }}
                    />
                 </div>
-                <div className="w-full flex justify-between items-center text-[10px] md:text-xs font-mono tracking-widest text-white/40 uppercase">
+                <div className="w-full flex justify-between items-center text-[10px] md:text-xs font-mono tracking-widest text-accent-text/40 uppercase">
                    <span>Initializing</span>
-                   <span className="text-white/90 font-bold">{progress}%</span>
+                   <span className="text-accent-text/90 font-bold">{progress}%</span>
                 </div>
               </div>
             </div>

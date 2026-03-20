@@ -61,7 +61,7 @@ export default function Overlay({ scrollYProgress }: { scrollYProgress: MotionVa
         style={{ opacity: o1, y: y1 }}
         className="absolute inset-0 flex flex-col items-center justify-center text-center p-8"
       >
-        <h1 className="text-3xl md:text-5xl lg:text-7xl font-medium font-monospace-custom mb-6 text-white drop-shadow-2xl leading-tight relative inline-flex flex-col md:flex-row items-center gap-6">
+        <h1 className="text-3xl md:text-5xl lg:text-7xl font-medium font-monospace-custom mb-6 text-accent-text drop-shadow-2xl leading-tight relative inline-flex flex-col md:flex-row items-center gap-6">
           <span className="text-center">
             Hello,
             <br />I'm Hari Krishna
@@ -69,7 +69,7 @@ export default function Overlay({ scrollYProgress }: { scrollYProgress: MotionVa
           <button 
             type="button"
             onClick={toggleAudio}
-            className={`p-3 rounded-full bg-white/5 border border-white/10 hover:bg-white/10 hover:border-white/20 transition-all duration-300 group/audio pointer-events-auto z-[100] cursor-pointer relative md:absolute md:left-full md:ml-6 ${isPlaying ? 'text-accent' : 'text-white/40'}`}
+            className={`p-3 rounded-full bg-accent/5 border border-accent/10 hover:bg-accent/10 hover:border-accent/20 transition-all duration-300 group/audio pointer-events-auto z-[100] cursor-pointer relative md:absolute md:left-full md:ml-6 ${isPlaying ? 'text-accent' : 'text-accent-text/40'}`}
             title="Listen to intro"
           >
             <Volume2 size={24} className={`transition-transform duration-300 ${isPlaying ? 'scale-110' : 'group-hover/audio:scale-110'}`} />
@@ -80,10 +80,10 @@ export default function Overlay({ scrollYProgress }: { scrollYProgress: MotionVa
             </span>
           )}
         </h1>
-        <p className="text-base md:text-xl text-white/80 font-light tracking-[0.3em] uppercase mt-2">
+        <p className="text-base md:text-xl text-accent-text/80 font-light tracking-[0.3em] uppercase mt-2">
           Product Manager
         </p>
-        <p className="text-xs md:text-sm text-white/50 font-normal tracking-[0.4em] uppercase mt-2">
+        <p className="text-xs md:text-sm text-accent-text/50 font-normal tracking-[0.4em] uppercase mt-2">
           MBA
         </p>
       </motion.div>
@@ -93,11 +93,11 @@ export default function Overlay({ scrollYProgress }: { scrollYProgress: MotionVa
         style={{ opacity: o2, y: y2 }}
         className="absolute inset-0 flex flex-col items-start justify-center text-left p-8 md:p-32"
       >
-        <h2 className="text-4xl md:text-6xl font-bold tracking-tight mb-6 text-white drop-shadow-xl">
+        <h2 className="text-4xl md:text-6xl font-bold tracking-tight mb-6 text-accent-text drop-shadow-xl">
           Building AI-driven <br/>learning products.
         </h2>
-        <div className="w-32 h-[2px] bg-white mb-8"></div>
-        <p className="max-w-xl text-xl text-white/70 antialiased font-light leading-relaxed drop-shadow-sm">
+        <div className="w-32 h-[2px] bg-accent mb-8"></div>
+        <p className="max-w-xl text-xl text-accent-text/70 antialiased font-light leading-relaxed drop-shadow-sm">
           Focusing on engaging, scalable, and impactful solutions for the future of education through comprehensive data analysis and A/B testing.
         </p>
       </motion.div>
@@ -107,11 +107,11 @@ export default function Overlay({ scrollYProgress }: { scrollYProgress: MotionVa
         style={{ opacity: o3, y: y3 }}
         className="absolute inset-0 flex flex-col items-end justify-center text-right p-8 md:p-32"
       >
-        <h2 className="text-4xl md:text-6xl font-bold tracking-tight mb-6 text-white drop-shadow-xl">
+        <h2 className="text-4xl md:text-6xl font-bold tracking-tight mb-6 text-accent-text drop-shadow-xl">
           Bridging strategy <br/>& user design.
         </h2>
-        <div className="w-32 h-[2px] bg-white mb-8 self-end"></div>
-        <p className="max-w-xl text-xl text-white/70 antialiased font-light leading-relaxed drop-shadow-sm">
+        <div className="w-32 h-[2px] bg-accent mb-8 self-end"></div>
+        <p className="max-w-xl text-xl text-accent-text/70 antialiased font-light leading-relaxed drop-shadow-sm">
           From defining roadmaps to managing end-to-end lifecycles. It’s about empathy, smooth collaboration, and delivering exceptional outcomes.
         </p>
       </motion.div>
