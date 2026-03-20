@@ -12,6 +12,9 @@ const spaceMono = Space_Mono({
 export const metadata: Metadata = {
   title: 'Product Manager | Portfolio',
   description: 'Hari Krishna - Product Manager specializing in AI-driven EdTech',
+  icons: {
+    icon: '/profile.png',
+  },
   openGraph: {
     title: 'Product Manager | Portfolio',
     description: 'Hari Krishna - Product Manager specializing in AI-driven EdTech',

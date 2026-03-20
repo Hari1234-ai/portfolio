@@ -177,25 +177,38 @@ export default function Resume() {
           transition={{ duration: 0.8 }}
           className="w-full"
         >
-          <h2 className="text-xl md:text-2xl font-light text-accent-text/60 uppercase tracking-[0.2em] mb-4 flex items-center gap-4 relative">
-            About Me
-            <button 
-              type="button"
-              onClick={toggleAudio}
-              className={`p-2 rounded-full bg-accent/5 border border-accent/10 hover:bg-accent/10 hover:border-accent/20 transition-all duration-300 group/audio z-[100] cursor-pointer ${isPlaying ? 'text-accent' : 'text-accent-text/40'}`}
-              title="Listen to story"
-            >
-              <Volume2 size={18} className={`transition-transform duration-300 ${isPlaying ? 'scale-110' : 'group-hover/audio:scale-110'}`} />
-            </button>
-            {errorMsg && (
-              <span className="text-red-400 text-xs font-mono absolute -bottom-6 left-32 whitespace-nowrap bg-black/50 px-2 py-1 rounded-md backdrop-blur-sm">
-                {errorMsg}
-              </span>
-            )}
-          </h2>
-          <p className="text-lg md:text-xl font-normal leading-relaxed tracking-normal text-accent-text/80">
-            Product Manager with 2+ years of experience specializing in <span className="font-semibold text-accent-text">AI-driven EdTech</span>, currently leading end-to-end product development at Edzy for scalable learning platforms serving NCERT students across India. Experienced in product strategy, user research, and data-driven growth, with a background in UX design and cross-functional collaboration. Skilled in building user-centric web and mobile solutions, with expertise in AI/ML products, Agile methodologies, and educational platforms.
-          </p>
+          <div className="flex flex-col md:flex-row gap-12 items-start mb-8">
+            <div className="w-32 h-32 md:w-48 md:h-48 rounded-3xl border border-accent/20 overflow-hidden shrink-0 shadow-2xl relative group/profile">
+              <img 
+                src="/profile.png" 
+                alt="Hari Krishna" 
+                className="w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-500 scale-110 hover:scale-100"
+                onError={(e) => { e.currentTarget.src = 'https://api.dicebear.com/7.x/initials/svg?seed=HK&backgroundColor=transparent&fontFamily=Inter&fontWeight=700'; }}
+              />
+              <div className="absolute inset-0 bg-accent/10 opacity-0 group-hover/profile:opacity-100 transition-opacity duration-500 pointer-events-none"></div>
+            </div>
+            <div className="flex-1">
+              <h2 className="text-xl md:text-2xl font-light text-accent-text/60 uppercase tracking-[0.2em] mb-4 flex items-center gap-4 relative">
+                About Me
+                <button 
+                  type="button"
+                  onClick={toggleAudio}
+                  className={`p-2 rounded-full bg-accent/5 border border-accent/10 hover:bg-accent/10 hover:border-accent/20 transition-all duration-300 group/audio z-[100] cursor-pointer ${isPlaying ? 'text-accent' : 'text-accent-text/40'}`}
+                  title="Listen to story"
+                >
+                  <Volume2 size={18} className={`transition-transform duration-300 ${isPlaying ? 'scale-110' : 'group-hover/audio:scale-110'}`} />
+                </button>
+                {errorMsg && (
+                  <span className="text-red-400 text-xs font-mono absolute -bottom-6 left-32 whitespace-nowrap bg-black/50 px-2 py-1 rounded-md backdrop-blur-sm">
+                    {errorMsg}
+                  </span>
+                )}
+              </h2>
+              <p className="text-lg md:text-xl font-normal leading-relaxed tracking-normal text-accent-text/80">
+                Product Manager with 2+ years of experience specializing in <span className="font-semibold text-accent-text">AI-driven EdTech</span>, currently leading end-to-end product development at Edzy for scalable learning platforms serving NCERT students across India. Experienced in product strategy, user research, and data-driven growth, with a background in UX design and cross-functional collaboration. Skilled in building user-centric web and mobile solutions, with expertise in AI/ML products, Agile methodologies, and educational platforms.
+              </p>
+            </div>
+          </div>
         </motion.div>
 
         {/* Experience Section - Vertical Timeline */}
