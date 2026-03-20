@@ -4,6 +4,7 @@ import { motion } from "framer-motion";
 import { BriefcaseBusiness, GraduationCap, PencilRuler, Brush, Wallet, Leaf, Utensils, Library, Volume2 } from "lucide-react";
 import Image from "next/image";
 import { useRef, useState, useEffect } from "react";
+import ThemePicker from "./ThemePicker";
 
 // Import images from public folder
 import walletwiseImg from "../../public/walletwise.png";
@@ -165,6 +166,9 @@ export default function Resume() {
     <section className="relative w-full bg-[#0a0a0a] py-32 px-6 md:px-24 z-20 text-white font-sans overflow-x-hidden">
       <div className="max-w-6xl mx-auto space-y-32">
         
+        {/* Theme Switching System */}
+        <ThemePicker />
+
         {/* Intro Summary */}
         <motion.div 
           initial={{ opacity: 0, y: 50 }}
@@ -178,7 +182,7 @@ export default function Resume() {
             <button 
               type="button"
               onClick={toggleAudio}
-              className={`p-2 rounded-full bg-white/5 border border-white/10 hover:bg-white/10 hover:border-white/20 transition-all duration-300 group/audio z-[100] cursor-pointer ${isPlaying ? 'text-blue-400' : 'text-white/40'}`}
+              className={`p-2 rounded-full bg-white/5 border border-white/10 hover:bg-white/10 hover:border-white/20 transition-all duration-300 group/audio z-[100] cursor-pointer ${isPlaying ? 'text-accent' : 'text-white/40'}`}
               title="Listen to story"
             >
               <Volume2 size={18} className={`transition-transform duration-300 ${isPlaying ? 'scale-110' : 'group-hover/audio:scale-110'}`} />

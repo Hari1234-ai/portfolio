@@ -69,7 +69,7 @@ export default function Overlay({ scrollYProgress }: { scrollYProgress: MotionVa
           <button 
             type="button"
             onClick={toggleAudio}
-            className={`p-3 rounded-full bg-white/5 border border-white/10 hover:bg-white/10 hover:border-white/20 transition-all duration-300 group/audio pointer-events-auto z-[100] cursor-pointer relative md:absolute md:left-full md:ml-6 ${isPlaying ? 'text-blue-400' : 'text-white/40'}`}
+            className={`p-3 rounded-full bg-white/5 border border-white/10 hover:bg-white/10 hover:border-white/20 transition-all duration-300 group/audio pointer-events-auto z-[100] cursor-pointer relative md:absolute md:left-full md:ml-6 ${isPlaying ? 'text-accent' : 'text-white/40'}`}
             title="Listen to intro"
           >
             <Volume2 size={24} className={`transition-transform duration-300 ${isPlaying ? 'scale-110' : 'group-hover/audio:scale-110'}`} />

@@ -3,6 +3,13 @@
 :root {
   --background: #121212;
   --foreground: #ffffff;
+  --accent-primary: #38bdf8;
+  --accent-glow: rgba(56, 189, 248, 0.3);
+}
+
+@theme {
+  --color-accent: var(--accent-primary);
+  --color-accent-glow: var(--accent-glow);
 }
 
 .font-monospace-custom {

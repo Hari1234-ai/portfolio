@@ -31,6 +31,35 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" className="scroll-smooth" suppressHydrationWarning>
+      <head>
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `
+              (function() {
+                try {
+                  const themes = [
+                    { id: "blue", color: "#38bdf8", glow: "rgba(56, 189, 248, 0.3)" },
+                    { id: "rose", color: "#e11d48", glow: "rgba(225, 29, 72, 0.3)" },
+                    { id: "teal", color: "#2dd4bf", glow: "rgba(45, 212, 191, 0.3)" },
+                    { id: "orange", color: "#f97316", glow: "rgba(249, 115, 22, 0.3)" },
+                    { id: "purple", color: "#c084fc", glow: "rgba(192, 132, 252, 0.3)" },
+                  ];
+                  const saved = localStorage.getItem("portfolio-theme");
+                  if (saved) {
+                    const theme = themes.find(t => t.id === saved);
+                    if (theme) {
+                      document.documentElement.style.setProperty("--accent-primary", theme.color);
+                      document.documentElement.style.setProperty("--accent-glow", theme.glow);
+                    }
+                  }
+                } catch (e) {
+                  console.error("Theme init failed", e);
+                }
+              })();
+            `,
+          }}
+        />
+      </head>
       <body className={`${inter.className} ${spaceMono.variable} bg-[#121212] text-white antialiased`}>
         {children}
       </body>
