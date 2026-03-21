@@ -1,6 +1,7 @@
 import type { Metadata } from 'next'
 import { Inter, Space_Mono } from 'next/font/google'
 import './globals.css'
+import Navbar from '@/components/Navbar'
 
 const inter = Inter({ subsets: ['latin'] })
 const spaceMono = Space_Mono({ 
@@ -62,7 +63,8 @@ export default function RootLayout({
           }}
         />
       </head>
-      <body className={`${inter.className} ${spaceMono.variable} bg-[#121212] text-white antialiased`}>
+      <body className={`${inter.className} ${spaceMono.variable} bg-[#0a0a0a] text-white selection:bg-accent selection:text-black`}>
+        <Navbar />
         {children}
       </body>
     </html>

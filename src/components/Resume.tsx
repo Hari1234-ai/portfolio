@@ -1,7 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { BriefcaseBusiness, GraduationCap, PencilRuler, Brush, Wallet, Leaf, Utensils, Library, Volume2 } from "lucide-react";
+import { BriefcaseBusiness, GraduationCap, PencilRuler, Brush, Wallet, Leaf, Utensils, Library, Volume2, Terminal } from "lucide-react";
 import Image from "next/image";
 import { useRef, useState, useEffect } from "react";
 import ThemePicker from "./ThemePicker";
@@ -162,6 +162,33 @@ export default function Resume() {
     }
   ];
 
+  const vibeProjects = [
+    {
+      title: "Cosmic identity",
+      subtitle: "Professional Portfolio & Identity",
+      description: "A high-end, immersive platform for professional identity, featuring dynamic visual effects and refined user interfaces.",
+      url: "https://cosmicidentity-zeif.vercel.app/",
+      icon: <Terminal className="w-6 h-6 text-accent-text/40" />,
+      tags: ["Next.js", "Framer Motion", "UI/UX"]
+    },
+    {
+      title: "Guessing duel",
+      subtitle: "Interactive Multiplayer Game",
+      description: "A fast-paced, engaging guessing game with real-time interactions and competitive mechanics.",
+      url: "https://guessingduel.vercel.app/",
+      icon: <Terminal className="w-6 h-6 text-accent-text/40" />,
+      tags: ["Real-time", "Game Design", "React"]
+    },
+    {
+      title: "VeriAI",
+      subtitle: "AI Verification Platform",
+      description: "A sophisticated AI-driven verification tool designed for accuracy and seamless user experience in automated processes.",
+      url: "https://veriai-beta.vercel.app/",
+      icon: <Terminal className="w-6 h-6 text-accent-text/40" />,
+      tags: ["AI/ML", "Product Design", "Beta"]
+    }
+  ];
+
   return (
     <section className="relative w-full bg-[#0a0a0a] py-32 px-6 md:px-24 z-20 text-accent-text font-sans overflow-x-hidden">
       <div className="max-w-6xl mx-auto space-y-32">
@@ -176,6 +203,7 @@ export default function Resume() {
           viewport={{ once: true, margin: "-100px" }}
           transition={{ duration: 0.8 }}
           className="w-full"
+          id="about"
         >
           <h2 className="text-xl md:text-2xl font-light text-accent-text/60 uppercase tracking-[0.2em] mb-4 flex items-center gap-4 relative">
             About Me
@@ -199,7 +227,7 @@ export default function Resume() {
         </motion.div>
 
         {/* Experience Section - Vertical Timeline */}
-        <div className="space-y-16 relative">
+        <div className="space-y-16 relative" id="experience">
           <motion.h3 
             initial={{ opacity: 0, x: -20 }}
             whileInView={{ opacity: 1, x: 0 }}
@@ -281,7 +309,7 @@ export default function Resume() {
         </div>
 
         {/* UX Case Studies Section */}
-        <div className="space-y-16">
+        <div className="space-y-16" id="projects">
           <motion.h3 
             initial={{ opacity: 0, x: -20 }}
             whileInView={{ opacity: 1, x: 0 }}
@@ -350,8 +378,70 @@ export default function Resume() {
           </div>
         </div>
 
+        {/* Vibe Coding Section */}
+        <div className="space-y-16" id="vibe-coding">
+          <motion.h3 
+            initial={{ opacity: 0, x: -20 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            className="text-4xl md:text-6xl font-black tracking-tighter flex items-center gap-6"
+          >
+            <span className="w-12 h-12 md:w-16 md:h-16 rounded-full bg-accent/10 flex items-center justify-center text-accent-text">
+              <Terminal size={24} className="md:w-8 md:h-8" />
+            </span>
+            Vibe Coding
+          </motion.h3>
+
+          <div className="flex overflow-x-auto hide-scrollbar gap-8 pb-8 px-2 -mx-2 snap-x">
+            {vibeProjects.map((project, i) => (
+              <motion.a
+                key={i}
+                href={project.url}
+                target="_blank"
+                rel="noreferrer"
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, margin: "-50px" }}
+                transition={{ duration: 0.5, delay: i * 0.1 }}
+                className="glass p-8 md:p-10 rounded-[2rem] border border-accent/5 hover:bg-accent/5 hover:border-accent/10 transition-all duration-500 group relative overflow-hidden flex flex-col min-w-[300px] md:min-w-[450px] snap-start"
+              >
+                <div className="absolute top-0 right-0 w-48 h-48 bg-accent/5 rounded-full blur-3xl -mr-24 -mt-24 opacity-0 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none"></div>
+                
+                <div className="relative z-10 flex flex-col h-full">
+                  <div className="flex justify-between items-start mb-6">
+                    <div className="flex items-center gap-4">
+                      <div className="w-12 h-12 rounded-xl bg-accent/5 border border-accent/10 flex items-center justify-center overflow-hidden shrink-0 group-hover:scale-110 transition-transform duration-500">
+                        {project.icon}
+                      </div>
+                      <div>
+                        <h4 className="text-2xl md:text-3xl font-bold mb-1 group-hover:translate-x-2 transition-transform duration-300">{project.title}</h4>
+                        <p className="text-accent-text/50 text-sm font-medium tracking-wide uppercase">{project.subtitle}</p>
+                      </div>
+                    </div>
+                    <div className="w-10 h-10 rounded-full bg-accent/5 flex items-center justify-center group-hover:bg-accent text-accent-text group-hover:text-black transition-all duration-300">
+                      <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M7 7h10v10"/><path d="M7 17L17 7"/></svg>
+                    </div>
+                  </div>
+                  
+                  <p className="text-accent-text/70 text-lg font-light leading-relaxed mb-8 flex-1">
+                    {project.description}
+                  </p>
+                  
+                  <div className="flex flex-wrap gap-2">
+                    {project.tags.map((tag, j) => (
+                      <span key={j} className="px-3 py-1 rounded-full border border-accent/5 bg-accent/[0.02] text-[10px] uppercase tracking-widest text-accent-text/40 group-hover:border-accent/10 transition-colors">
+                        {tag}
+                      </span>
+                    ))}
+                  </div>
+                </div>
+              </motion.a>
+            ))}
+          </div>
+        </div>
+
         {/* Expertise Section */}
-        <div className="space-y-12">
+        <div className="space-y-12" id="expertise">
           <motion.h3 
             initial={{ opacity: 0, x: -20 }}
             whileInView={{ opacity: 1, x: 0 }}
@@ -388,7 +478,7 @@ export default function Resume() {
         </div>
 
         {/* Education Section */}
-        <div className="space-y-12">
+        <div className="space-y-12" id="education">
           <motion.h3 
             initial={{ opacity: 0, x: -20 }}
             whileInView={{ opacity: 1, x: 0 }}
@@ -416,6 +506,25 @@ export default function Resume() {
                 <p className="text-accent-text/70 font-light">{edu.school}</p>
               </motion.div>
             ))}
+          </div>
+        </div>
+        
+        {/* Blogs Section (Placeholder) */}
+        <div className="space-y-12" id="blogs">
+          <motion.h3 
+            initial={{ opacity: 0, x: -20 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            className="text-4xl md:text-5xl font-black tracking-tighter flex items-center gap-4"
+          >
+            <span className="w-12 h-12 md:w-16 md:h-16 rounded-full bg-accent/10 flex items-center justify-center text-accent-text">
+              <span className="text-xl md:text-2xl font-bold italic">B</span>
+            </span>
+            Blogs
+          </motion.h3>
+          <div className="p-12 rounded-[2.5rem] border border-accent/5 bg-accent/[0.02] flex flex-col items-center justify-center text-center">
+            <p className="text-accent-text/40 text-lg mb-4">Coming soon... I'm currently documenting my thoughts on product strategy and AI.</p>
+            <div className="w-24 h-1 bg-accent/10 rounded-full"></div>
           </div>
         </div>
 
