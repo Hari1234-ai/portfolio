@@ -52,8 +52,14 @@ export default function Navbar() {
     const targetId = href.substring(1);
     const elem = document.getElementById(targetId);
     if (elem) {
+      const offset = 100;
+      const bodyRect = document.body.getBoundingClientRect().top;
+      const elementRect = elem.getBoundingClientRect().top;
+      const elementPosition = elementRect - bodyRect;
+      const offsetPosition = elementPosition - offset;
+
       window.scrollTo({
-        top: elem.offsetTop - 80,
+        top: offsetPosition,
         behavior: "smooth",
       });
     }
@@ -66,7 +72,7 @@ export default function Navbar() {
       transition={{ duration: 0.3 }}
       className={`fixed top-0 left-0 right-0 z-[2147483647] transition-all duration-500 ${
         isScrolled 
-          ? "py-4 bg-black/40 backdrop-blur-md border-b border-white/10 shadow-2xl" 
+          ? "py-4 bg-black/40 backdrop-blur-md border-b border-white/5 shadow-2xl" 
           : "py-6 bg-transparent"
       }`}
     >
