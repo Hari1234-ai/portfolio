@@ -11,6 +11,9 @@ import walletwiseImg from "../../public/walletwise.png";
 import ecoshopImg from "../../public/ecoshop.png";
 import quickserveImg from "../../public/quickserve.png";
 import preciseImg from "../../public/precise.png";
+import cosmicImg from "../../public/projects/cosmic.png";
+import guessingImg from "../../public/projects/guessing.png";
+import veriaiImg from "../../public/projects/veriai.png";
 
 export default function Resume() {
   const audioRef = useRef<HTMLAudioElement | null>(null);
@@ -168,6 +171,7 @@ export default function Resume() {
       subtitle: "Professional Portfolio & Identity",
       description: "A high-end, immersive platform for professional identity, featuring dynamic visual effects and refined user interfaces.",
       url: "https://cosmicidentity-zeif.vercel.app/",
+      image: cosmicImg,
       icon: <Terminal className="w-6 h-6 text-accent-text/40" />,
       tags: ["Next.js", "Framer Motion", "UI/UX"]
     },
@@ -176,6 +180,7 @@ export default function Resume() {
       subtitle: "Interactive Multiplayer Game",
       description: "A fast-paced, engaging guessing game with real-time interactions and competitive mechanics.",
       url: "https://guessingduel.vercel.app/",
+      image: guessingImg,
       icon: <Terminal className="w-6 h-6 text-accent-text/40" />,
       tags: ["Real-time", "Game Design", "React"]
     },
@@ -184,6 +189,7 @@ export default function Resume() {
       subtitle: "AI Verification Platform",
       description: "A sophisticated AI-driven verification tool designed for accuracy and seamless user experience in automated processes.",
       url: "https://veriai-beta.vercel.app/",
+      image: veriaiImg,
       icon: <Terminal className="w-6 h-6 text-accent-text/40" />,
       tags: ["AI/ML", "Product Design", "Beta"]
     }
@@ -411,7 +417,15 @@ export default function Resume() {
                   <div className="flex justify-between items-start mb-6">
                     <div className="flex items-center gap-4">
                       <div className="w-12 h-12 rounded-xl bg-accent/5 border border-accent/10 flex items-center justify-center overflow-hidden shrink-0 group-hover:scale-110 transition-transform duration-500">
-                        {project.icon}
+                        {(project as any).image ? (
+                          <Image 
+                            src={(project as any).image} 
+                            alt={project.title} 
+                            className="w-full h-full object-cover" 
+                          />
+                        ) : (
+                          project.icon
+                        )}
                       </div>
                       <div>
                         <h4 className="text-2xl md:text-3xl font-bold mb-1 group-hover:translate-x-2 transition-transform duration-300">{project.title}</h4>

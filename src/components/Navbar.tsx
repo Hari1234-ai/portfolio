@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import { motion, AnimatePresence } from "framer-motion";
+import { motion, AnimatePresence, useScroll, useMotionValueEvent } from "framer-motion";
 
 const navLinks = [
   { name: "About Me", href: "#about" },
@@ -16,6 +16,17 @@ const navLinks = [
 export default function Navbar() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [activeSection, setActiveSection] = useState("");
+  const [isVisible, setIsVisible] = useState(true);
+  const { scrollY } = useScroll();
+
+  useMotionValueEvent(scrollY, "change", (latest) => {
+    const previous = scrollY.getPrevious();
+    if (previous !== undefined && latest > previous && latest > 150) {
+      setIsVisible(false);
+    } else {
+      setIsVisible(true);
+    }
+  });
 
   useEffect(() => {
     const handleScroll = () => {
@@ -49,11 +60,14 @@ export default function Navbar() {
   };
 
   return (
-    <nav
+    <motion.nav
+      initial={{ y: 0 }}
+      animate={{ y: isVisible ? 0 : -100 }}
+      transition={{ duration: 0.3 }}
       className={`fixed top-0 left-0 right-0 z-[2147483647] transition-all duration-500 ${
         isScrolled 
-          ? "py-4 bg-black/95 backdrop-blur-xl border-b-2 border-accent shadow-2xl" 
-          : "py-6 bg-black/80 backdrop-blur-md border-b border-accent/30"
+          ? "py-4 bg-black/40 backdrop-blur-md border-b border-white/10 shadow-2xl" 
+          : "py-6 bg-transparent"
       }`}
     >
       <div className="max-w-7xl mx-auto px-6 md:px-12 flex justify-between items-center">
@@ -89,6 +103,6 @@ export default function Navbar() {
 
         {/* Mobile menu button could go here if needed, but keeping it minimalist for now */}
       </div>
-    </nav>
+    </motion.nav>
   );
 }
