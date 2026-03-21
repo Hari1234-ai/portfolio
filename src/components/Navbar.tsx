@@ -70,7 +70,7 @@ export default function Navbar() {
       initial={{ y: 0 }}
       animate={{ y: isVisible ? 0 : -100 }}
       transition={{ duration: 0.3 }}
-      className={`fixed top-0 left-0 right-0 z-[2147483647] transition-all duration-500 ${
+      className={`hidden md:block fixed top-0 left-0 right-0 z-[2147483647] transition-all duration-500 ${
         isScrolled 
           ? "py-4 bg-black/40 backdrop-blur-md border-b border-white/5 shadow-2xl" 
           : "py-6 bg-transparent"
