@@ -242,7 +242,7 @@ export default function Resume() {
             Experience
           </motion.h3>
 
-          <div className="relative pl-12 md:pl-32 py-8">
+          <div className="relative pl-0 md:pl-32 py-8">
             {/* The Vertical Line - Centered in the gutter */}
             <div className="absolute left-[24px] md:left-[64px] top-0 bottom-0 w-px bg-gradient-to-b from-white/0 via-accent/20 to-white/0 hidden md:block"></div>
             
