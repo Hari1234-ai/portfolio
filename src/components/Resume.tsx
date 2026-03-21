@@ -4,7 +4,6 @@ import { motion } from "framer-motion";
 import { BriefcaseBusiness, GraduationCap, PencilRuler, Brush, Wallet, Leaf, Utensils, Library, Volume2, Terminal } from "lucide-react";
 import Image from "next/image";
 import { useRef, useState, useEffect } from "react";
-import ThemePicker from "./ThemePicker";
 
 // Import images from public folder
 import walletwiseImg from "../../public/walletwise.png";
@@ -199,9 +198,6 @@ export default function Resume() {
     <section className="relative w-full bg-[#0a0a0a] py-32 px-6 md:px-24 z-20 text-accent-text font-sans overflow-x-hidden">
       <div className="max-w-6xl mx-auto space-y-32">
         
-        {/* Theme Switching System */}
-        <ThemePicker />
-
         {/* Intro Summary */}
         <motion.div 
           initial={{ opacity: 0, y: 50 }}
@@ -248,7 +244,7 @@ export default function Resume() {
 
           <div className="relative pl-12 md:pl-32 py-8">
             {/* The Vertical Line - Centered in the gutter */}
-            <div className="absolute left-[24px] md:left-[64px] top-0 bottom-0 w-px bg-gradient-to-b from-white/0 via-accent/20 to-white/0"></div>
+            <div className="absolute left-[24px] md:left-[64px] top-0 bottom-0 w-px bg-gradient-to-b from-white/0 via-accent/20 to-white/0 hidden md:block"></div>
             
             <div className="space-y-24">
               {experiences.map((exp, i) => (
@@ -261,7 +257,7 @@ export default function Resume() {
                   className="relative"
                 >
                   {/* Horizontal Connection Line - Centered on the card's height */}
-                  <div className="absolute -left-[24px] md:-left-[64px] top-1/2 w-[24px] md:w-[64px] h-px bg-accent/20 z-10 pointer-events-none"></div>
+                  <div className="absolute -left-[24px] md:-left-[64px] top-1/2 w-[24px] md:w-[64px] h-px bg-accent/20 z-10 pointer-events-none hidden md:block"></div>
 
                   <div className="glass p-8 md:p-12 rounded-[2.5rem] border border-accent/5 hover:bg-accent/5 hover:border-accent/10 transition-all duration-500 group relative overflow-hidden flex flex-col xl:flex-row gap-12 items-center">
                     <div className="absolute top-0 right-0 w-64 h-64 bg-accent/5 rounded-full blur-3xl -mr-32 -mt-32 opacity-0 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none"></div>

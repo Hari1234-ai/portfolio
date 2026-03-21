@@ -9,7 +9,7 @@ html {
   --foreground: #ffffff;
   --accent-primary: #ffffff;
   --accent-glow: rgba(255, 255, 255, 0.3);
-  --accent-text: #ffffff; /* This will be dynamic */
+  --accent-text: #ffffff;
 }
 
 @theme {
